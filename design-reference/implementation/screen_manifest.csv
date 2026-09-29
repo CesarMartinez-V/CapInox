@@ -1,0 +1,50 @@
+tier,file,size,purpose
+canonical,01_inbox_light.png,3840x2160,Primary high-fidelity implementation reference
+canonical,02_inbox_dark.png,3840x2160,Primary high-fidelity implementation reference
+canonical,03_inbox_media.png,3840x2160,Primary high-fidelity implementation reference
+canonical,04_contacts_crm.png,3840x2160,Primary high-fidelity implementation reference
+canonical,05_campaigns_dashboard.png,3840x2160,Primary high-fidelity implementation reference
+canonical,06_campaign_builder.png,3840x2160,Primary high-fidelity implementation reference
+canonical,07_metrics_performance.png,3840x2160,Primary high-fidelity implementation reference
+canonical,08_team_roles.png,3840x2160,Primary high-fidelity implementation reference
+canonical,09_system_diagnostics.png,3840x2160,Primary high-fidelity implementation reference
+coverage,archive.png,3840x2160,Screen/state coverage reference
+coverage,call_view.png,3840x2160,Screen/state coverage reference
+coverage,campaign_detail.png,3840x2160,Screen/state coverage reference
+coverage,campaign_message.png,3840x2160,Screen/state coverage reference
+coverage,campaign_ready.png,3840x2160,Screen/state coverage reference
+coverage,campaign_recipients.png,3840x2160,Screen/state coverage reference
+coverage,campaign_review.png,3840x2160,Screen/state coverage reference
+coverage,campaigns.png,3840x2160,Screen/state coverage reference
+coverage,close.png,3840x2160,Screen/state coverage reference
+coverage,contact_profile.png,3840x2160,Screen/state coverage reference
+coverage,contacts.png,3840x2160,Screen/state coverage reference
+coverage,dashboard_dark.png,3840x2160,Screen/state coverage reference
+coverage,dashboard_light.png,3840x2160,Screen/state coverage reference
+coverage,diagnostics.png,3840x2160,Screen/state coverage reference
+coverage,inbox_ai.png,3840x2160,Screen/state coverage reference
+coverage,inbox_dark.png,3840x2160,Screen/state coverage reference
+coverage,inbox_empty.png,3840x2160,Screen/state coverage reference
+coverage,inbox_human.png,3840x2160,Screen/state coverage reference
+coverage,inbox_media.png,3840x2160,Screen/state coverage reference
+coverage,inbox_waiting.png,3840x2160,Screen/state coverage reference
+coverage,incident_detail.png,3840x2160,Screen/state coverage reference
+coverage,login_dark.png,3840x2160,Screen/state coverage reference
+coverage,login_light.png,3840x2160,Screen/state coverage reference
+coverage,media_send.png,3840x2160,Screen/state coverage reference
+coverage,metrics_agent.png,3840x2160,Screen/state coverage reference
+coverage,metrics_global.png,3840x2160,Screen/state coverage reference
+coverage,new_conversation.png,3840x2160,Screen/state coverage reference
+coverage,notifications.png,3840x2160,Screen/state coverage reference
+coverage,reopen.png,3840x2160,Screen/state coverage reference
+coverage,roles.png,3840x2160,Screen/state coverage reference
+coverage,settings_ai.png,3840x2160,Screen/state coverage reference
+coverage,settings_bot.png,3840x2160,Screen/state coverage reference
+coverage,settings_dark.png,3840x2160,Screen/state coverage reference
+coverage,settings_general.png,3840x2160,Screen/state coverage reference
+coverage,settings_routing.png,3840x2160,Screen/state coverage reference
+coverage,settings_whatsapp.png,3840x2160,Screen/state coverage reference
+coverage,team.png,3840x2160,Screen/state coverage reference
+coverage,transfer.png,3840x2160,Screen/state coverage reference
+coverage,user_detail.png,3840x2160,Screen/state coverage reference
+coverage,voice_record.png,3840x2160,Screen/state coverage reference

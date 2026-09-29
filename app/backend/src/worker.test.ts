@@ -8,8 +8,9 @@ test('durable per-contact worker recovers an expired lease, serializes burst and
   const {db,persistInbound}=await import('./db.js');
   const {normalizeProviderEvent}=await import('./normalize.js');
   const {wakeJobs}=await import('./worker.js');
-  const original=globalThis.fetch,previousUrl=config.N8N_AI_WEBHOOK_URL,previousDelay=config.AI_MESSAGE_DEBOUNCE_MS;
-  config.N8N_AI_WEBHOOK_URL='https://ai.fixture.test/route';config.AI_MESSAGE_DEBOUNCE_MS=200;
+   const original=globalThis.fetch,previousUrl=config.N8N_AI_WEBHOOK_URL,previousDelay=config.AI_MESSAGE_DEBOUNCE_MS,previousPolicy=config.HANDOFF_NO_AGENT_POLICY;
+   config.N8N_AI_WEBHOOK_URL='https://ai.fixture.test/route';config.AI_MESSAGE_DEBOUNCE_MS=200;
+   config.HANDOFF_NO_AGENT_POLICY='WAIT_QUEUE';
   let aiCalls=0;
   globalThis.fetch=async(url)=>{
     if(String(url).includes('ai.fixture.test')){aiCalls++;return Response.json({success:true,route:'AI',reply:'Bien, te ayudo.'});}
@@ -40,5 +41,5 @@ test('durable per-contact worker recovers an expired lease, serializes burst and
     assert.equal(aiCalls,2);
     assert.equal((db.prepare('SELECT route FROM messages WHERE id=?').get(extra[1].id) as {route:string}).route,'PRESET');
     assert.equal(persistInbound(normalizeProviderEvent({event:'whatsapp.inbound',payload:{messageId:db.prepare('SELECT provider_message_id FROM messages WHERE id=?').get(items[0].id) && (db.prepare('SELECT provider_message_id FROM messages WHERE id=?').get(items[0].id) as {provider_message_id:string}).provider_message_id,contact:{id:contact},message:{text:'Hola'}}})),null);
-  }finally{globalThis.fetch=original;config.N8N_AI_WEBHOOK_URL=previousUrl;config.AI_MESSAGE_DEBOUNCE_MS=previousDelay;}
+   }finally{globalThis.fetch=original;config.N8N_AI_WEBHOOK_URL=previousUrl;config.AI_MESSAGE_DEBOUNCE_MS=previousDelay;config.HANDOFF_NO_AGENT_POLICY=previousPolicy;}
 });

@@ -8,12 +8,14 @@
     "4": { "intent": "human", "reply": "Perfecto 👤\n\nTe voy a conectar con un asesor humano. Puedes seguir escribiendo aquí mientras te atienden." }
   },
   "claim": "Hola 👋 Ya estoy contigo. ¿Cómo puedo ayudarte?",
+  "noAgent": "En este momento todos nuestros asesores están ocupados o no están disponibles.\n\nPara no hacerte esperar, CAP IA continuará atendiéndote por este chat 🤖.\n\nSi más adelante deseas intentar hablar con un asesor nuevamente, escribe *asesor*.",
   "close": "Gracias por comunicarte con nosotros 👋\n\nLa conversación ha finalizado. Si necesitas ayuda nuevamente, puedes volver a escribirnos.",
   "returnToBot": "Perfecto 👍 Si necesitas algo más puedes elegir una opción:\n\n1️⃣ Información de productos\n2️⃣ Cotización\n3️⃣ Consulta general\n4️⃣ Hablar con un asesor",
   "image": "Recibí tu imagen 📷. Si necesitas que un asesor la revise, puedes escribir *asesor*.",
   "audio": "Recibí tu audio 🎤. En esta demo puedes escribir tu consulta o solicitar un asesor humano.",
   "video": "Recibí tu video 🎬. Si necesitas que un asesor lo revise, puedes escribir *asesor*.",
   "aiFailure": "Estoy teniendo una dificultad temporal para procesar tu consulta. Si deseas, puedo conectarte con un asesor humano.\n\n1. Intentar nuevamente\n2. Hablar con asesor",
+  "aiFailureNoAgent": "Estoy teniendo una dificultad temporal para procesar tu consulta. Por favor intenta nuevamente en unos momentos.",
   "aiFlood": "Recibí varios mensajes seguidos. Dame un momento para procesarlos. Si necesitas ayuda inmediata, escribe *asesor*.",
   "quickReplies": ["¡Hola! Ya estoy contigo 👋", "Permíteme un momento mientras verifico.", "¿Puedes compartirme un poco más de información?", "Gracias. ¿Necesitas ayuda con algo más?"]
 }

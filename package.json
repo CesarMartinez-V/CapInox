@@ -4,14 +4,27 @@
   "type": "module",
   "version": "0.1.0",
   "scripts": {
-    "dev": "concurrently -k \"npm:dev:backend\" \"npm:dev:frontend\"",
+    "dev": "npm run dev:local",
     "dev:backend": "tsx watch app/backend/src/server.ts",
     "dev:frontend": "vite --config app/frontend/vite.config.ts",
+    "dev:worker": "node --import tsx scripts/worker-standalone.ts",
+    "dev:local": "node --import tsx scripts/dev-all.mjs",
+    "dev:all": "npm run dev:local",
+    "dev:full": "node --import tsx scripts/dev-all.mjs --tunnel",
+    "doctor": "node --import tsx scripts/doctor.mjs",
+    "doctor:json": "node --import tsx scripts/doctor.mjs --json",
     "build": "tsc -p app/backend/tsconfig.json && vue-tsc -p app/frontend/tsconfig.json && vite build --config app/frontend/vite.config.ts",
     "test": "tsx --test app/backend/src/*.test.ts",
-    "test:load": "node --import tsx scripts/load-test.mjs"
+    "test:visual": "playwright test --config playwright.visual.config.ts",
+    "test:visual:diff": "node scripts/visual-diff.mjs",
+    "test:load": "node --import tsx scripts/load-test.mjs",
+    "test:load:600": "node --import tsx scripts/load-600.mjs",
+    "test:load:600:human": "node --import tsx scripts/load-600.mjs --all-human",
+    "test:realtime": "node --import tsx scripts/check-realtime.mjs",
+    "test:latency:outbound": "node --import tsx scripts/load-outbound.mjs"
   },
   "dependencies": {
+    "@lucide/vue": "^1.48.0",
     "better-sqlite3": "^12.2.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
@@ -23,6 +36,7 @@
     "zod": "^4.1.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/better-sqlite3": "^7.6.13",
     "@types/cookie-parser": "^1.4.9",
     "@types/express": "^5.0.3",
@@ -31,6 +45,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "concurrently": "^9.2.1",
     "n8n-nodes-message-sync-ai": "0.1.3",
+    "sharp": "^0.35.5",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vite": "^7.1.3",

@@ -13,7 +13,7 @@ test('3 online agents share 10 pending chats atomically, respect capacity and ig
   config.AUTO_ASSIGN_HUMAN='true';
   globalThis.fetch=async()=>Response.json({id:randomUUID()});
   try{
-    for(let i=0;i<3;i++)db.prepare('INSERT INTO agents(id,username,name,status,max_active_chats,last_seen_at) VALUES (?,?,?,?,?,?)').run(`agent-${i}`,`agent-${i}`,`Agent ${i}`,'ONLINE',4,new Date().toISOString());
+    for(let i=0;i<3;i++)db.prepare('INSERT INTO agents(id,username,name,status,max_active_chats,last_seen_at,connection_count) VALUES (?,?,?,?,?,?,1)').run(`agent-${i}`,`agent-${i}`,`Agent ${i}`,'ONLINE',4,new Date().toISOString());
     const ids:string[]=[];
     for(let i=0;i<10;i++){
       const event=normalizeProviderEvent({event:'whatsapp.inbound',payload:{messageId:randomUUID(),contact:{id:randomUUID()},message:{text:'Hola'}}});

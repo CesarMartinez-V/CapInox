@@ -46,6 +46,11 @@ export async function migrate(db: Database.Database, path: string, root: string)
   addColumns(db,'conversations',{next_sequence:'INTEGER NOT NULL DEFAULT 0',invalid_menu_attempts:'INTEGER NOT NULL DEFAULT 0',closed_at:'TEXT',handoff_at:'TEXT',priority:"TEXT NOT NULL DEFAULT 'NORMAL'"});
   addColumns(db,'messages',{latitude:'REAL',longitude:'REAL',sequence:'INTEGER',received_at:'TEXT',client_message_id:'TEXT',reply_to_message_id:'TEXT',provider_event_id:'TEXT',provider_media_id:'TEXT',provider_url:'TEXT',storage_path:'TEXT',storage_status:'TEXT',duration:'REAL',caption:'TEXT',thumbnail_url:'TEXT'});
   addColumns(db,'agents',{name:'TEXT',password_hash:'TEXT',active:'INTEGER NOT NULL DEFAULT 1',status:"TEXT NOT NULL DEFAULT 'OFFLINE'",max_active_chats:'INTEGER NOT NULL DEFAULT 5',active_chat_count:'INTEGER NOT NULL DEFAULT 0',last_assigned_at:'TEXT',last_seen_at:'TEXT'});
+  addColumns(db,'agents',{role:"TEXT NOT NULL DEFAULT 'AGENT'"});
+  addColumns(db,'agents',{manual_status:"TEXT NOT NULL DEFAULT 'ONLINE'",connection_count:'INTEGER NOT NULL DEFAULT 0',can_receive_chats:'INTEGER NOT NULL DEFAULT 1'});
+  addColumns(db,'conversations',{version:'INTEGER NOT NULL DEFAULT 0',disposition:'TEXT',closed_by:'TEXT',close_note:'TEXT',sale_amount:'REAL'});
+  addColumns(db,'conversations',{sale_reference:'TEXT',follow_up_at:'TEXT',final_assignee_id:'TEXT'});
+  addColumns(db,'conversations',{needs_reassignment:'INTEGER NOT NULL DEFAULT 0',assigned_at:'TEXT',assignment_source:'TEXT',last_unavailable_at:'INTEGER'});
   db.exec(`WITH ranked AS (SELECT id, ROW_NUMBER() OVER(PARTITION BY conversation_id ORDER BY rowid) AS seq FROM messages)
     UPDATE messages SET sequence=(SELECT seq FROM ranked WHERE ranked.id=messages.id) WHERE sequence IS NULL;
     UPDATE messages SET received_at=created_at WHERE received_at IS NULL;
@@ -58,6 +63,8 @@ export async function migrate(db: Database.Database, path: string, root: string)
     CREATE UNIQUE INDEX IF NOT EXISTS messages_provider_event_id ON messages(provider_event_id) WHERE provider_event_id IS NOT NULL;
     CREATE UNIQUE INDEX IF NOT EXISTS conversations_one_open_contact ON conversations(contact_id) WHERE mode!='CLOSED';
     CREATE INDEX IF NOT EXISTS conversations_inbox ON conversations(mode,last_message_at DESC,id);
+    CREATE INDEX IF NOT EXISTS conversations_recent ON conversations(last_message_at DESC,id DESC);
+    CREATE INDEX IF NOT EXISTS conversations_agent_recent ON conversations(assigned_agent_id,mode,last_message_at DESC);
     CREATE INDEX IF NOT EXISTS conversations_handoff_fifo ON conversations(mode,handoff_at,id);
     CREATE INDEX IF NOT EXISTS conversations_agent ON conversations(assigned_agent_id,mode);
     CREATE INDEX IF NOT EXISTS messages_conversation_page ON messages(conversation_id,sequence DESC);
@@ -78,7 +85,79 @@ export async function migrate(db: Database.Database, path: string, root: string)
     );
     CREATE INDEX IF NOT EXISTS media_message ON media_assets(message_id);
     CREATE TABLE IF NOT EXISTS metrics_counters (name TEXT PRIMARY KEY, value INTEGER NOT NULL DEFAULT 0);
+    CREATE TABLE IF NOT EXISTS service_heartbeat (service TEXT PRIMARY KEY, last_seen_at INTEGER NOT NULL);
+    CREATE TABLE IF NOT EXISTS conversation_reads (
+      user_id TEXT NOT NULL REFERENCES agents(id),conversation_id TEXT NOT NULL REFERENCES conversations(id),
+      last_read_sequence INTEGER NOT NULL DEFAULT 0,updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+      PRIMARY KEY(user_id,conversation_id)
+    );
+    CREATE TABLE IF NOT EXISTS message_latency (
+      message_id TEXT PRIMARY KEY REFERENCES messages(id),correlation_id TEXT NOT NULL,direction TEXT NOT NULL,
+      provider_event_timestamp TEXT,server_received_at TEXT,validation_completed_at TEXT,dedup_completed_at TEXT,
+      db_persisted_at TEXT,job_enqueued_at TEXT,http_ack_at TEXT,worker_claimed_at TEXT,
+      router_started_at TEXT,router_completed_at TEXT,socket_emitted_at TEXT,browser_received_at TEXT,
+      client_created_at TEXT,api_received_at TEXT,provider_request_started_at TEXT,provider_response_at TEXT,
+      provider_message_id_received_at TEXT,delivery_callback_at TEXT,read_callback_at TEXT,
+      ai_requested_at TEXT,n8n_request_started_at TEXT,n8n_response_at TEXT,ai_reply_queued_at TEXT,
+      media_started_at TEXT,media_completed_at TEXT,
+      validation_ms REAL,db_persist_ms REAL,http_ack_ms REAL,queue_wait_ms REAL,router_ms REAL,socket_ack_ms REAL,
+      provider_request_ms REAL,ai_request_ms REAL,media_ms REAL,api_accept_ms REAL,client_to_api_ms REAL,
+      provider_llm_latency_ms REAL,
+      queue_priority TEXT,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS latency_recent ON message_latency(direction,server_received_at,created_at);
+    CREATE INDEX IF NOT EXISTS latency_created_at ON message_latency(created_at DESC);
+    CREATE TABLE IF NOT EXISTS realtime_events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,kind TEXT NOT NULL,conversation_id TEXT NOT NULL,
+      message_id TEXT,created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS realtime_conversation ON realtime_events(conversation_id,id);
+    CREATE INDEX IF NOT EXISTS realtime_created_at ON realtime_events(created_at);
+    CREATE TABLE IF NOT EXISTS socket_latency (
+      user_id TEXT PRIMARY KEY REFERENCES agents(id),transport TEXT NOT NULL,ping_ms REAL,
+      reconnects INTEGER NOT NULL DEFAULT 0,updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE TABLE IF NOT EXISTS conversation_notes (
+      id TEXT PRIMARY KEY,conversation_id TEXT NOT NULL REFERENCES conversations(id),actor_user_id TEXT NOT NULL REFERENCES agents(id),
+      text TEXT NOT NULL,created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS notes_conversation ON conversation_notes(conversation_id,created_at);
+    CREATE TABLE IF NOT EXISTS tags (id TEXT PRIMARY KEY,name TEXT NOT NULL UNIQUE,color TEXT NOT NULL DEFAULT '#a6e3ce',active INTEGER NOT NULL DEFAULT 1);
+    CREATE TABLE IF NOT EXISTS conversation_tags (conversation_id TEXT NOT NULL REFERENCES conversations(id),tag_id TEXT NOT NULL REFERENCES tags(id),PRIMARY KEY(conversation_id,tag_id));
+    CREATE TABLE IF NOT EXISTS outbound_jobs (
+      id TEXT PRIMARY KEY, message_id TEXT NOT NULL UNIQUE REFERENCES messages(id),provider TEXT NOT NULL DEFAULT 'MESSAGESYNC',
+      status TEXT NOT NULL DEFAULT 'PENDING' CHECK(status IN ('PENDING','SENDING','SENT','FAILED','UNKNOWN')),
+      attempt_count INTEGER NOT NULL DEFAULT 0,available_at INTEGER NOT NULL DEFAULT 0,
+      locked_at INTEGER,locked_by TEXT,last_error TEXT,created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS outbound_ready ON outbound_jobs(status,available_at,created_at);
+    CREATE INDEX IF NOT EXISTS outbound_message ON outbound_jobs(message_id,status);
+    CREATE TABLE IF NOT EXISTS audit_log (
+      id TEXT PRIMARY KEY, actor_user_id TEXT REFERENCES agents(id), action TEXT NOT NULL,
+      resource_type TEXT NOT NULL, resource_id TEXT NOT NULL, before_json TEXT, after_json TEXT,
+      ip TEXT, user_agent TEXT, created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE INDEX IF NOT EXISTS audit_resource ON audit_log(resource_type,resource_id,created_at);
+    CREATE TABLE IF NOT EXISTS system_incidents (
+      id TEXT PRIMARY KEY,code TEXT NOT NULL,severity TEXT NOT NULL,component TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'OPEN',
+      title TEXT NOT NULL,user_message TEXT NOT NULL,technical_message TEXT NOT NULL,
+      correlation_id TEXT,conversation_id TEXT,message_id TEXT,job_id TEXT,http_status INTEGER,
+      attempt_count INTEGER NOT NULL DEFAULT 0,first_seen_at TEXT NOT NULL DEFAULT (datetime('now')),
+      last_seen_at TEXT NOT NULL DEFAULT (datetime('now')),occurrence_count INTEGER NOT NULL DEFAULT 1,
+      resolved_at TEXT,resolved_by TEXT,metadata TEXT NOT NULL DEFAULT '{}'
+    );
+    CREATE INDEX IF NOT EXISTS incidents_status_time ON system_incidents(status,severity,last_seen_at);
+    CREATE UNIQUE INDEX IF NOT EXISTS incidents_active_code_resource ON system_incidents(code,COALESCE(job_id,message_id,conversation_id,'')) WHERE status='OPEN';
   `);
+  addColumns(db,'jobs',{completed_at:'INTEGER'});
+  db.exec("INSERT OR IGNORE INTO tags(id,name) VALUES ('vip','VIP'),('followup','Seguimiento'),('sale','Venta'),('issue','Problema')");
+  addColumns(db,'media_assets',{thumbnail_path:'TEXT'});
+  // Historical outbound rows were attempted synchronously: never auto-replay their ambiguous state.
+  db.exec(`INSERT OR IGNORE INTO outbound_jobs(id,message_id,status,attempt_count)
+    SELECT lower(hex(randomblob(16))),id,CASE WHEN delivery_status='sent' THEN 'SENT' ELSE 'UNKNOWN' END,1
+    FROM messages WHERE direction='outbound';`);
   // Existing captured provider events contain message.media as [{url,type}]. Reclassify without discarding text/history.
   const oldMedia=db.prepare("SELECT id,raw_payload FROM messages WHERE direction='inbound' AND raw_payload IS NOT NULL AND NOT EXISTS(SELECT 1 FROM media_assets WHERE message_id=messages.id)").all() as Array<{id:string;raw_payload:string}>;
   db.transaction(()=>{

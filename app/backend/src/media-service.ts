@@ -6,6 +6,8 @@ import { promisify } from 'node:util';
 import { config } from './config.js';
 import { db } from './db.js';
 import { storage,mediaDirectory as directory } from './storage.js';
+import {mark,measure,monotonic,elapsed} from './latency.js';
+import { queueRealtime } from './realtime.js';
 
 const extensions:Record<string,string>={
   'image/jpeg':'.jpg','image/png':'.png','image/webp':'.webp','image/gif':'.gif',
@@ -31,11 +33,13 @@ export function trustedProviderUrl(value:string) {
   try { const u=new URL(value);return u.protocol==='https:' && u.hostname==='storage.googleapis.com' && !u.username && !u.password && u.port===''; }
   catch { return false; }
 }
-export type Asset={id:string;message_id:string;mime_type:string|null;storage_path:string|null;playable_path:string|null;storage_status:string;file_name:string|null;media_size:number|null};
-export const getAsset=(id:string)=>db.prepare('SELECT id,message_id,mime_type,storage_path,playable_path,storage_status,file_name,media_size FROM media_assets WHERE id=?').get(id) as Asset|undefined;
+export type Asset={id:string;message_id:string;mime_type:string|null;storage_path:string|null;playable_path:string|null;thumbnail_path:string|null;storage_status:string;file_name:string|null;media_size:number|null};
+export const getAsset=(id:string)=>db.prepare('SELECT id,message_id,mime_type,storage_path,playable_path,thumbnail_path,storage_status,file_name,media_size FROM media_assets WHERE id=?').get(id) as Asset|undefined;
 
 export async function downloadMedia(messageId:string) {
   const assets=db.prepare("SELECT id,provider_url FROM media_assets WHERE message_id=? AND storage_status='PENDING'").all(messageId) as Array<{id:string;provider_url:string|null}>;
+  if(assets.length)mark(messageId,'media_started_at');
+  const started=monotonic();
   for (const asset of assets) {
     if(!db.prepare("UPDATE media_assets SET storage_status='DOWNLOADING' WHERE id=? AND storage_status='PENDING'").run(asset.id).changes)continue;
     let output='';
@@ -54,6 +58,14 @@ export async function downloadMedia(messageId:string) {
       if (!size) throw new Error('Empty media');
       if(!validSignature(mime,head))throw new Error('Media MIME/signature mismatch');
       let playable:string|null=null;
+      let thumbnail:string|null=null;
+      if(mime.startsWith('image/')){
+        const target=storage.newKey('.jpg');
+        try{
+          await promisify(execFile)('ffmpeg',['-nostdin','-v','error','-i',storage.localPath(output),'-frames:v','1','-vf','scale=320:-1:force_original_aspect_ratio=decrease',storage.localPath(target)],{timeout:15000,maxBuffer:65536});
+          if((await stat(storage.localPath(target))).size>0)thumbnail=target;
+        }catch{await storage.remove(target);}
+      }
       if (mime==='audio/ogg'||mime==='audio/opus') {
         const target=storage.newKey('.mp3');
         try {
@@ -62,15 +74,20 @@ export async function downloadMedia(messageId:string) {
         } catch { await storage.remove(target); }
       }
       db.transaction(()=>{
-        db.prepare("UPDATE media_assets SET mime_type=?,media_size=?,storage_path=?,playable_path=?,storage_status='READY',error=NULL WHERE id=?").run(mime,size,output,playable,asset.id);
+        db.prepare("UPDATE media_assets SET mime_type=?,media_size=?,storage_path=?,playable_path=?,thumbnail_path=?,storage_status='READY',error=NULL WHERE id=?").run(mime,size,output,playable,thumbnail,asset.id);
         db.prepare("UPDATE messages SET media_url=?,mime_type=?,media_size=?,storage_path=?,storage_status='READY' WHERE id=? AND media_url IS NULL").run(`/api/media/${asset.id}`,mime,size,output,messageId);
+        const conv=db.prepare('SELECT conversation_id FROM messages WHERE id=?').get(messageId) as {conversation_id:string};
+        queueRealtime('media.ready',conv.conversation_id,messageId);
       })();
     } catch (err) {
       if (output && storage.exists(output)) await storage.remove(output);
       db.prepare("UPDATE media_assets SET storage_status='FAILED',error=? WHERE id=?").run(err instanceof Error?err.message.slice(0,100):'download failed',asset.id);
       db.prepare("UPDATE messages SET storage_status='FAILED' WHERE id=? AND media_url IS NULL").run(messageId);
+      const conv=db.prepare('SELECT conversation_id FROM messages WHERE id=?').get(messageId) as {conversation_id:string}|undefined;
+      if(conv)queueRealtime('media.ready',conv.conversation_id,messageId);
     }
   }
+  if(assets.length){mark(messageId,'media_completed_at');measure(messageId,'media_ms',elapsed(started));}
 }
 
 export async function retryMedia(messageId:string) {

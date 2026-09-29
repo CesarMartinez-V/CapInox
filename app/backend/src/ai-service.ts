@@ -1,12 +1,14 @@
 import { config } from './config.js';
 import { db, event, getContact, type Conversation } from './db.js';
+import { recordIncident } from './incidents.js';
+import {mark,measure,monotonic,elapsed} from './latency.js';
 
 export interface KnowledgeProvider { search(query:string,context:{intent:string}):Promise<string[]> }
 export class NullKnowledgeProvider implements KnowledgeProvider { async search(_query:string,_context:{intent:string}){return [];} }
 export const knowledge:KnowledgeProvider=new NullKnowledgeProvider();
 
 let failures=0,openUntil=0;
-export async function askAI(conversation:Conversation,text:string){
+export async function askAI(conversation:Conversation,text:string, messageId?:string){
   if(!config.N8N_AI_WEBHOOK_URL)throw new Error('AI Engine no configurado');
   if(Date.now()<openUntil)throw new Error('Circuit breaker activo');
   const count=(db.prepare(`SELECT COUNT(*) AS n FROM conversation_events e JOIN conversations v ON v.id=e.conversation_id
@@ -17,6 +19,7 @@ export async function askAI(conversation:Conversation,text:string){
     ORDER BY sequence DESC LIMIT 12`).all(conversation.id).reverse();
   const references=await knowledge.search(text,{intent:conversation.intent||'general'});
   event(conversation.id,'n8n_called',{mode:conversation.mode});
+  const started=monotonic();if(messageId){mark(messageId,'ai_requested_at');mark(messageId,'n8n_request_started_at');}
   try{
     const response=await fetch(config.N8N_AI_WEBHOOK_URL,{
       method:'POST',headers:{'Content-Type':'application/json',...(config.N8N_INTERNAL_TOKEN?{'X-CAP-Internal-Token':config.N8N_INTERNAL_TOKEN}:{})},
@@ -24,12 +27,22 @@ export async function askAI(conversation:Conversation,text:string){
         text,intent:conversation.intent||'general',sessionId:conversation.id,history,references}),
       signal:AbortSignal.timeout(25000),
     });
+    if(messageId)mark(messageId,'n8n_response_at');
     if(!response.ok)throw new Error(`AI Engine HTTP ${response.status}`);
     const data:unknown=await response.json();
+    if(messageId)measure(messageId,'ai_request_ms',elapsed(started));
     if(!data||typeof data!=='object'||!('success' in data)||!('reply' in data)||data.success!==true||typeof data.reply!=='string'||!data.reply.trim())throw new Error('AI Engine response inválida');
-    failures=0;return data.reply.trim();
+    failures=0;event(conversation.id,'ai_succeeded',{durationMs:elapsed(started)});
+    const answer=data.reply.trim();
+    if(/\b(?:ya (?:te|lo|la) (?:conect[eé]|transfer[ií])|(?:te|le) (?:paso|transfiero|conecto) (?:con |a |al )?(?:un |una |el |la )?(?:asesor|agente|persona)|(?:te|lo) (?:atender[aá]|llamar[aá]) (?:un |una )?(?:asesor|agente))/i.test(answer)){
+      event(conversation.id,'ai_reply_corrected');
+      return 'Si deseas hablar con un asesor, escribe *asesor* o selecciona la opción 4. El cambio a atención humana solo se confirmará cuando haya un asesor disponible.';
+    }
+    return answer;
   }catch(error){
-    event(conversation.id,'ai_failed');
+    if(messageId)measure(messageId,'ai_request_ms',elapsed(started));
+    event(conversation.id,'ai_failed',{durationMs:elapsed(started)});
+    recordIncident({code:'AI_ENGINE_FAILED',component:'AI',severity:'WARNING',title:'CAP IA no pudo responder',userMessage:'La inteligencia artificial no respondió. Enviaremos una respuesta preconfigurada al cliente.',technicalMessage:error instanceof Error?error.message:'AI response invalid',conversationId:conversation.id});
     if(++failures>=5){openUntil=Date.now()+60000;failures=0;}
     throw error;
   }

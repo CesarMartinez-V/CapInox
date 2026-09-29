@@ -1,0 +1,45 @@
+# Auditoría de latencia — CAP Inbox, 2026-09-29
+
+**Resultado: PARTIAL.** Se identificaron y corrigieron esperas y una pérdida de notificación **dentro de CAP**. El tramo WhatsApp original → MessageSync y el navegador remoto con el build nuevo todavía no se midieron. La instancia pública que el propietario mantiene abierta sigue ejecutando el proceso anterior; no se reinició ni se cambió su túnel/Location/credenciales para obtener números aparentes.
+
+## Antes: evidencia de la DB viva y del código anterior
+
+- 37 inbound de las últimas 24 h tenían timestamp en el **sobre del webhook de MessageSync**. Sobre → recepción backend: p50 **−39 ms** (desfase de relojes), p95/p99 **214 ms**. No conocemos si ese timestamp es el envío original de WhatsApp: **no atribuir 20–30 s al proveedor basándose en él**.
+- Recepción → `processed_at` legacy (precisión de 1 segundo): MENÚ texto p95 **3017 ms** (8 muestras); PRESET texto p95 **3253 ms** (10); IA texto p95 **11595 ms** (11); HUMAN texto p95 **0 ms** (5). Ese indicador incluía la espera de MessageSync/n8n, y **no equivale** al tiempo en que el mensaje aparecía en la pantalla.
+- Código anterior: `sendReply()` aguardaba HTTP de MessageSync para bot, preset y envío humano; `POST /messages` aguardaba al proveedor antes de responder. `routeMessage` terminaba después del envío. El worker separado ejecutaba callbacks `onChange` en **otro proceso**, sin comunicación con Socket.IO del backend: cambios de routing/status/media no llegaban al navegador inmediatamente. Vue hacía `GET /api/conversations` y `GET .../messages` por cada `conversation:changed`, en lugar de insertar por `sequence`.
+- 8 GET locales `/health/live`: p50 **1 ms**, p95 **29 ms**. Por el Quick Tunnel existente, desde esta misma máquina: p50 **119 ms**, p95 **273 ms**; handshake Engine.IO WebSocket local **5 ms**, túnel **234 ms** (un intento). Son sondeos de health/upgrade, **no** una prueba del navegador autenticado o de WhatsApp.
+- SQLite viva: `journal_mode=WAL`, `busy_timeout=5000 ms`, `synchronous=1` (NORMAL). No se modificaron pragmas a ciegas. No hay listener local de n8n en 5678; cambiar la URL actual a localhost sería erróneo.
+
+## Cambios y trazabilidad
+
+- `message_latency` guarda correlation ID y las etapas UTC ISO: evento del proveedor, recepción temprana antes de JSON parse, validación, dedup, commit, enqueue, ACK, claim, routing, Socket, ACK navegador, outbound API/proveedor, n8n y media. Duraciones dentro del mismo proceso usan `performance.now()`. Timestamps entre equipos tienen incertidumbre de reloj. `DELIVERED`/`READ` y latencia propia del LLM quedan **null** sin callback/metadata verificados.
+- Endpoints **SUPERADMIN**: `GET /api/diagnostics/latency?minutes=15|60|1440` (P50/P95/P99 y muestras) y `GET /api/diagnostics/latency/:messageId` (timeline sin raw payload ni tokens). En Configuración → Diagnóstico → Rendimiento se muestran métricas y «Ver trazabilidad» por mensaje nuevo. El browser hace ACK con su hora y el servidor mide el primer ACK de Socket con reloj monotónico; es **roundtrip + render**, no latencia de red de una sola dirección.
+- El webhook guarda mensaje/conversación/job en transacción, emite `message:created` después del commit y devuelve 202; el worker ya no es requisito para mostrar un inbound humano. El relay SQLite `realtime_events` cruza procesos en polls de 100 ms; hay recuperación por secuencia tras reconexión, scoped RBAC y pruebas de no-emisión al agente ajeno. Estado/media del worker pasan por el mismo relay.
+- Salidas bot/preset/humanas, incluida la despedida de cierre, se persisten + job durable y se notifican en Socket **antes** de contactar MessageSync. Los POST humano y cierre devuelven 202; Vue dibuja inmediatamente burbuja optimista con UUID, la reconcilia por `client_message_id`, inserta por `sequence` y evita refetch completo por evento. El cierre permanece `CLOSING` visible y **sólo se archiva** cuando el proveedor confirma la despedida; un timeout UNKNOWN nunca se reenvía automáticamente.
+- Worker: high (menú, human, handoff) y AI con presupuestos separados, configurables; media LOW en hasta dos descargas independientes. Poll inbound 100 ms, outbound 150 ms, media 500 ms, sin busy loop. AI debounce por defecto 700 ms sólo para IA (el valor privado de `.env` se respeta). Node `fetch` reutiliza conexiones mediante el pool Undici por defecto; no se cambió n8n a URL interna sin evidencia de red privada.
+- Un monitor registra incidencias `PERFORMANCE_DEGRADATION_*` si p95 de commit→Socket o cola HIGH/outbound supera 2 s, o proveedor/n8n supera 15 s. Queries de inbox/paginación y persistencias DB >100 ms generan logs estructurados sin texto/contacto/secretos.
+
+## Después: mediciones locales aisladas, proveedores simulados
+
+| Prueba | Resultado | Límite |
+|---|---|---|
+| `npm test` | **26/26 PASS** después de cierre asíncrono, prioridades y tracing. `npm run build` PASS; migración sobre copia real (113 mensajes, 6 media) con integridad OK y 0 errores FK. | Fixtures, no WhatsApp real. |
+| `npm run test:realtime` | Backend y worker en **procesos diferentes**; webhook ACK 202; WebSocket inbound **27 ms**, routing **113 ms**; polling fallback inbound **30 ms**, routing **116 ms**; primer ACK Socket **4,384 ms**; cero llamadas al proveedor. | Un evento en loopback, no navegador remoto. |
+| `npm run test:latency:outbound` | 100 respuestas humanas persistidas como 100 jobs PENDING, 100 Socket events, **cero** llamadas externas: API backend p95 **3,133 ms**, API cliente HTTP p95 **76,314 ms**, Socket ACK p95 **41,929 ms**. | Hasta 16 requests cliente simultáneos; muestra API sin proveedor, no entrega WhatsApp. |
+| `npm run test:load:600:human` | 600 HUMAN_ACTIVE, 1800 eventos, 20 agentes × 30 chats: 0 perdidos, 0 errores de secuencia/propiedad, backlog final 0. Última corrida: DB commit p95 **0,752 ms**; ACK backend p95 **2,265 ms**; cola HIGH p95 **1 ms**; router p95 **3,374 ms**; ACK cliente p95 **373,119 ms**. | 64 solicitudes de transporte concurrentes; mock MessageSync, sin 600 Socket browsers. Diferencia cliente↔backend bajo carga no se atribuye a DB. |
+| `npm run test:load:600` | 600 contactos mixtos, 1800 eventos: 100 humanos y 100 fallback IA. DB commit p95 **0,919 ms**; cola HIGH **1 ms**; cola IA **2 ms**; router **4,33 ms**; ACK backend **2,764 ms**; ACK cliente **375,847 ms**. Rutas: MENU p95 **3,689 ms**, PRESET **4,078 ms**, HUMAN **2,442 ms**; AI mock **5,703 ms**. | IA y proveedor simulados, LLM real no medido. |
+| Media lenta | Test bloqueó descarga y verificó que otro contacto se procesó mientras media seguía pendiente. | Reproducción visual de archivos reales pendiente. |
+| Envío humano lento | Test mantuvo respuesta MessageSync pendiente y verificó API **202** + job durable y Socket antes de respuesta externa. | P95 con MessageSync real no medido. |
+
+Las muestras sin browser retornan `socket_ack_ms: null`; no se inventó un P95 browser. El ACK de la herramienta de carga incluye colas de cliente HTTP bajo 64 solicitudes concurrentes; el ACK **dentro de Express** se mide por separado.
+
+## Qué falta para cerrar los 20–30 segundos observados
+
+1. Esta versión aún **no está desplegada** en la instancia manual pública anterior. No se alteraron procesos ajenos ni se introdujo un Quick Tunnel nuevo. Primero hace falta el Named Tunnel y hostname estables indicados en [`PHASE_REPORT.md`](PHASE_REPORT.md); `dev:full` falla expresamente sin ellos.
+2. Con el build nuevo accesible y `npm run doctor` confirmando destino exacto, una única ronda controlada: usuario envía `LATENCY TEST 001`; agente envía `LATENCY TEST 002`; luego `LATENCY TEST AI`. Superadmin abre «Ver trazabilidad» y copia tres timelines. Registrar origen MessageSync/WhatsApp, commit, Socket, ACK browser y la respuesta real del proveedor/n8n **sin publicar teléfonos ni tokens**.
+3. En Cloudflare confirmar WebSockets habilitados y bypass de cache para `/socket.io/*`, `/api/*`, `/webhooks/*`; el backend añade `Cache-Control: no-store` a API/webhooks. Comparar desde el navegador remoto transporte WebSocket vs polling, ping y reconexiones, y diferenciar la red del usuario del túnel. Sin esa corrida, la causa externa específica de los 20–30 s continúa **no demostrada**.
+4. Objetivos internos: receive→commit p95 <100 ms, commit→emit <50 ms, HIGH wait <250 ms, API humano accept <200 ms y browser visible <500 ms desde recepción backend. Una sola muestra local no satisface un objetivo P95 remoto. Escala real de 600 WebSockets, 600 solicitudes físicamente simultáneas y callback `DELIVERED/READ` permanecen como pruebas pendientes.
+
+### Producción objetivo
+
+Navegador HTTPS → proxy/Named Tunnel con hostname estable → backend y Socket.IO; MessageSync al mismo hostname estable de webhook. Backend, worker y n8n en red privada si se confirma que están en el mismo servidor/red; en ese caso evaluar URL n8n interna con prueba de conectividad y autenticación. SQLite WAL sólo para demo: la ruta de producción considera PostgreSQL + Redis y almacenamiento de objetos, sin afirmar capacidades aún no implementadas.

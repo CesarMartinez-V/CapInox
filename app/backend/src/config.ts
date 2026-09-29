@@ -14,7 +14,10 @@ const env = z.object({
   ADMIN_PASSWORD: z.string().default(''),
   MESSAGESYNC_API_KEY: z.string().default(''),
   GHL_LOCATION_ID: z.string().default(''),
-  PUBLIC_URL: z.string().default(''),
+  PUBLIC_WEBHOOK_URL: z.string().default(''),
+  CLOUDFLARE_TUNNEL_NAME: z.string().default(''),
+  CLOUDFLARE_TUNNEL_TOKEN: z.string().default(''),
+  QUICK_TUNNEL_ALLOWED: z.enum(['true','false']).default('false'),
   AUTO_REGISTER_WEBHOOK: z.enum(['true','false']).default('false'),
   WEBHOOK_INGRESS_SECRET: z.string().default(''),
   N8N_AI_WEBHOOK_URL: z.string().default(''),
@@ -24,10 +27,20 @@ const env = z.object({
   BOT_SESSION_TIMEOUT_MINUTES: z.coerce.number().positive().default(30),
   MAX_UPLOAD_MB: z.coerce.number().positive().default(20),
   MAX_MEDIA_MB: z.coerce.number().positive().default(20),
-  AI_MESSAGE_DEBOUNCE_MS: z.coerce.number().int().min(0).max(10000).default(1200),
+  AI_MESSAGE_DEBOUNCE_MS: z.coerce.number().int().min(0).max(10000).default(700),
+  INBOUND_POLL_MS: z.coerce.number().int().min(50).max(1000).default(100),
+  OUTBOUND_POLL_MS: z.coerce.number().int().min(50).max(1000).default(150),
+  MEDIA_POLL_MS: z.coerce.number().int().min(100).max(2000).default(500),
+  WORKER_HIGH_CONCURRENCY: z.coerce.number().int().min(1).max(32).default(8),
+  WORKER_AI_CONCURRENCY: z.coerce.number().int().min(1).max(16).default(2),
   AI_MAX_CALLS_PER_MINUTE_PER_CONTACT: z.coerce.number().int().min(1).default(12),
   AUTO_ASSIGN_HUMAN: z.enum(['true','false']).default('false'),
   AGENT_HEARTBEAT_TIMEOUT_SECONDS: z.coerce.number().int().min(15).default(90),
+  HANDOFF_NO_AGENT_POLICY: z.enum(['AI_FALLBACK','WAIT_QUEUE']).default('AI_FALLBACK'),
+  AGENT_DISCONNECT_GRACE_SECONDS: z.coerce.number().int().min(15).default(120),
+  WARN_WAIT_SECONDS: z.coerce.number().int().min(1).default(60),
+  CRITICAL_WAIT_SECONDS: z.coerce.number().int().min(1).default(180),
+  OUTBOUND_MAX_ATTEMPTS: z.coerce.number().int().min(1).max(20).default(5),
   DATABASE_DRIVER: z.enum(['sqlite','postgres']).default('sqlite'),
   QUEUE_DRIVER: z.enum(['database','redis']).default('database'),
 }).parse(process.env);
@@ -36,14 +49,14 @@ export const config = env;
 export type Menu = {
   welcome: string; invalid: string;
   options: Record<string, { intent: string; reply: string }>;
-  claim: string; returnToBot: string; close: string; image: string; audio: string; video: string; aiFailure: string; aiFlood:string;
+  claim: string; noAgent:string; returnToBot: string; close: string; image: string; audio: string; video: string; aiFailure: string; aiFailureNoAgent:string;aiFlood:string;
   quickReplies: string[];
 };
 const menuSchema = z.object({
   welcome: z.string().min(1), invalid: z.string().min(1),
   options: z.record(z.string(), z.object({ intent: z.string(), reply: z.string().min(1) })),
-  claim: z.string(), returnToBot: z.string(), close: z.string(), image: z.string(), audio: z.string(), video: z.string(),
-  aiFailure: z.string(), aiFlood:z.string(), quickReplies: z.array(z.string()),
+  claim: z.string(), noAgent:z.string(),returnToBot: z.string(), close: z.string(), image: z.string(), audio: z.string(), video: z.string(),
+  aiFailure: z.string(), aiFailureNoAgent:z.string(),aiFlood:z.string(), quickReplies: z.array(z.string()),
 });
 export function getMenu(): Menu {
   return menuSchema.parse(JSON.parse(readFileSync(resolve(root, 'config/menu.json'), 'utf8')));

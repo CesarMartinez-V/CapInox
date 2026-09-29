@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import {rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
 
 process.env.NODE_ENV='test';process.env.DEMO_DB_PATH=':memory:';
 
@@ -29,16 +30,22 @@ test('captured array-shaped image/audio are downloaded, authenticated and served
     const addr=httpServer.address();assert.ok(addr&&typeof addr!=='string');const base=`http://127.0.0.1:${addr.port}`;
     const login=await original(base+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:'admin',password:'fixture-pass'})});
     const cookie=login.headers.get('set-cookie')!.split(';')[0];
+    const owner=(db.prepare("SELECT id FROM agents WHERE username='admin'").get() as {id:string}).id;
+    const outsider=randomUUID(),outsiderToken=randomUUID();
+    db.prepare("INSERT INTO agents(id,username,role) VALUES (?,'media-outsider','AGENT')").run(outsider);
+    db.prepare('INSERT INTO sessions(token_hash,agent_id,expires_at) VALUES (?,?,?)').run(createHash('sha256').update(outsiderToken).digest('hex'),outsider,Date.now()+60000);
     const contact=randomUUID();
     for(const [kind,mime,bytes] of [['image','image/png',png],['audio','audio/mpeg',mp3]] as const){
       const payload={event:'whatsapp.inbound',eventId:randomUUID(),timestamp:new Date().toISOString(),payload:{messageId:randomUUID(),contact:{id:contact},message:{text:kind,media:[{url:`https://storage.googleapis.com/fixture/${kind}`,type:kind}]}}};
-      const item=persistInbound(normalizeProviderEvent(payload))!;setMode(item.conversationId,'HUMAN_PENDING');
+       const item=persistInbound(normalizeProviderEvent(payload))!;setMode(item.conversationId,'HUMAN_ACTIVE',null,owner);
       await downloadMedia(item.id);
       const asset=db.prepare('SELECT id,mime_type,storage_path,storage_status FROM media_assets WHERE message_id=?').get(item.id) as {id:string;mime_type:string;storage_path:string;storage_status:string};
       created.push(asset.storage_path);assert.equal(asset.storage_status,'READY');assert.equal(asset.mime_type,mime);
       const row=db.prepare('SELECT message_type,media_url FROM messages WHERE id=?').get(item.id) as {message_type:string;media_url:string};
       assert.equal(row.message_type,kind);assert.equal(row.media_url,`/api/media/${asset.id}`);
-      assert.equal((await original(base+row.media_url)).status,401);
+       assert.equal((await original(base+row.media_url)).status,401);
+       assert.equal((await original(base+row.media_url,{headers:{Cookie:`cap_session=${outsiderToken}`}})).status,403);
+       assert.equal((await original(base+row.media_url+'?thumbnail=1',{headers:{Cookie:cookie}})).status,200);
       const result=await original(base+row.media_url,{headers:{Cookie:cookie}});
       assert.equal(result.status,200);assert.equal(result.headers.get('content-type'),mime);
       assert.deepEqual(Buffer.from(await result.arrayBuffer()),bytes);

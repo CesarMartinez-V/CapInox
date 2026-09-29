@@ -11,7 +11,8 @@ test('human-only inbox preserves full causal history, invalid menu never spends 
   const {httpServer}=await import('./server.js');
   const original=globalThis.fetch;
   config.GHL_LOCATION_ID='fixture-location';config.WEBHOOK_INGRESS_SECRET='fixture-secret-12345678901234567890';
-  config.ADMIN_PASSWORD='fixture-pass';config.N8N_AI_WEBHOOK_URL='https://ai.fixture.test/route';
+   config.ADMIN_PASSWORD='fixture-pass';config.N8N_AI_WEBHOOK_URL='https://ai.fixture.test/route';
+   config.HANDOFF_NO_AGENT_POLICY='WAIT_QUEUE';
   let providerSends=0,aiCalls=0;
   globalThis.fetch=async(url,init)=>{
     const value=String(url);
@@ -46,11 +47,14 @@ test('human-only inbox preserves full causal history, invalid menu never spends 
     assert.deepEqual(history.messages.map((m:{direction:string})=>m.direction),['inbound','outbound','inbound','outbound']);
     assert.deepEqual(history.messages.map((m:{sequence:number})=>m.sequence),[1,2,3,4]);
     assert.equal((await(await api(`/api/conversations/${id}/messages?afterSequence=2`)).json()).messages.length,2);
+    db.prepare("UPDATE agents SET status='ONLINE',last_seen_at=?,connection_count=1 WHERE username='admin'").run(new Date().toISOString());
     assert.equal((await api(`/api/conversations/${id}/claim`,'POST')).status,200);
-    const close=await api(`/api/conversations/${id}/close`,'POST');assert.equal(close.status,200);
+    assert.equal((await api(`/api/conversations/${id}/close`,'POST')).status,400);
+    const close=await api(`/api/conversations/${id}/close`,'POST',{disposition:'CONSULT_RESOLVED'});assert.equal(close.status,202);
+    await wait(()=>(db.prepare('SELECT mode FROM conversations WHERE id=?').get(id) as {mode:string}).mode==='CLOSED');
     assert.equal((await(await api('/api/conversations')).json()).conversations.length,0);
     const archived=await(await api('/api/conversations?filter=closed')).json();assert.ok(archived.conversations.some((x:{id:string})=>x.id===id));
-    assert.equal((db.prepare('SELECT status FROM conversations WHERE id=?').get(id) as {status:string}).status,'CLOSED');
+    assert.deepEqual(db.prepare('SELECT status,disposition FROM conversations WHERE id=?').get(id),{status:'CLOSED',disposition:'CONSULT_RESOLVED'});
     assert.equal((db.prepare('SELECT COUNT(*) n FROM messages WHERE conversation_id=? AND client_message_id=?').get(id,`close:${id}`) as {n:number}).n,1);
     await send(c,'Hola otra vez');
     const sessions=db.prepare('SELECT id,mode FROM conversations WHERE contact_id=(SELECT id FROM contacts WHERE provider_contact_id=?) ORDER BY rowid').all(c) as Array<{id:string;mode:string}>;
@@ -70,12 +74,12 @@ test('real captured provider media array classifies image/audio and rejects priv
   for(const url of ['http://127.0.0.1/x','http://localhost/x','file:///etc/passwd','https://storage.googleapis.com.evil.test/x','https://169.254.169.254/'])assert.equal(trustedProviderUrl(url),false);
 });
 
-test('closing failure keeps chat operable and manual close retries same outbound bubble',async()=>{
+test('ambiguous closing send remains UNKNOWN; force close requires audit and never replays',async()=>{
   const {config,getMenu}=await import('./config.js');
   const {db}=await import('./db.js');
   const {httpServer}=await import('./server.js');
   const original=globalThis.fetch;let failClose=true;
-  config.GHL_LOCATION_ID='fixture-location';config.WEBHOOK_INGRESS_SECRET='fixture-secret-12345678901234567890';
+  config.GHL_LOCATION_ID='fixture-location';config.WEBHOOK_INGRESS_SECRET='fixture-secret-12345678901234567890';config.HANDOFF_NO_AGENT_POLICY='WAIT_QUEUE';
   globalThis.fetch=async(url,init)=>{
     if(String(url).startsWith('https://api.messagesync.ai/')){
       const body=JSON.parse(String(init?.body));
@@ -98,14 +102,20 @@ test('closing failure keeps chat operable and manual close retries same outbound
       for(let i=0;i<100;i++){if((db.prepare('SELECT processed_at FROM messages WHERE provider_message_id=?').get(msg) as {processed_at:string|null}|undefined)?.processed_at)return;await new Promise(resolve=>setTimeout(resolve,10));}
       assert.fail('worker stalled');
     };
+    db.prepare("UPDATE agents SET status='OFFLINE',connection_count=0 WHERE username='admin'").run();
     await inbound('Hola');await inbound('4');
     const c=db.prepare("SELECT id FROM conversations WHERE contact_id=(SELECT id FROM contacts WHERE provider_contact_id=?) ORDER BY rowid DESC LIMIT 1").get(contact) as {id:string};
-    assert.equal((await post(`/api/conversations/${c.id}/claim`)).status,200);
-    assert.equal((await post(`/api/conversations/${c.id}/close`)).status,502);
+    db.prepare("UPDATE agents SET status='ONLINE',last_seen_at=?,connection_count=1 WHERE username='admin'").run(new Date().toISOString());
+    const claim=await post(`/api/conversations/${c.id}/claim`);assert.equal(claim.status,200,await claim.text());
+    assert.equal((await post(`/api/conversations/${c.id}/close`,{disposition:'CONSULT_RESOLVED'})).status,202);
+    for(let i=0;i<100;i++){if((db.prepare('SELECT delivery_status FROM messages WHERE client_message_id=?').get(`close:${c.id}`) as {delivery_status:string}|undefined)?.delivery_status==='unknown')break;await new Promise(resolve=>setTimeout(resolve,10));}
     assert.equal((db.prepare('SELECT mode FROM conversations WHERE id=?').get(c.id) as {mode:string}).mode,'HUMAN_ACTIVE');
-    assert.equal((db.prepare('SELECT COUNT(*) n FROM messages WHERE client_message_id=? AND delivery_status=?').get(`close:${c.id}`,'failed') as {n:number}).n,1);
-    assert.equal((await post(`/api/conversations/${c.id}/close`)).status,200);
+    assert.equal((db.prepare('SELECT disposition FROM conversations WHERE id=?').get(c.id) as {disposition:string|null}).disposition,null);
+    assert.equal((db.prepare('SELECT COUNT(*) n FROM messages WHERE client_message_id=? AND delivery_status=?').get(`close:${c.id}`,'unknown') as {n:number}).n,1);
+    assert.equal((await post(`/api/conversations/${c.id}/close`,{disposition:'CONSULT_RESOLVED'})).status,409);
+    assert.equal((await post(`/api/conversations/${c.id}/close`,{disposition:'CONSULT_RESOLVED',force:true})).status,202);
     assert.equal((db.prepare('SELECT mode FROM conversations WHERE id=?').get(c.id) as {mode:string}).mode,'CLOSED');
     assert.equal((db.prepare('SELECT COUNT(*) n FROM messages WHERE client_message_id=?').get(`close:${c.id}`) as {n:number}).n,1);
+    assert.equal((db.prepare("SELECT COUNT(*) n FROM audit_log WHERE action='force_close' AND resource_id=?").get(c.id) as {n:number}).n,1);
   }finally{globalThis.fetch=original;await new Promise<void>(resolve=>httpServer.close(()=>resolve()));}
 });

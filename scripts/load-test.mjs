@@ -31,7 +31,7 @@ let accepted=0;
 const maxTransportInFlight=64;let inFlight=0;const waiting=[];
 async function acquire(){if(inFlight>=maxTransportInFlight)await new Promise(resolve=>waiting.push(resolve));inFlight++;return()=>{inFlight--;waiting.shift()?.();};}
 async function scenario(name,entries){
-  const samples=[],errors=[];const baseline=process.memoryUsage().rss;
+  const samples=[],errors=[];const baseline=process.memoryUsage().rss,started=performance.now();
   const sends=entries.map(async({contact,text},i)=>{
     const body={event:'whatsapp.inbound',eventId:randomUUID(),locationId:'fixture-location',timestamp:new Date().toISOString(),payload:{messageId:randomUUID(),contact:{id:contact},message:{text}}};
     const start=performance.now();
@@ -47,7 +47,8 @@ async function scenario(name,entries){
   if(!errors.length)await done(accepted);
   const sorted=samples.sort((a,b)=>a-b),memoryDelta=Math.round((process.memoryUsage().rss-baseline)/1024/1024);
   const errorCounts=Object.fromEntries([...new Set(errors)].map(value=>[String(value),errors.filter(x=>x===value).length]));
-  console.log(JSON.stringify({scenario:name,logical_requests:entries.length,max_transport_inflight:maxTransportInFlight,errors:errors.length,error_types:errorCounts,p95_ms:percentile(sorted,.95),p99_ms:percentile(sorted,.99),rss_delta_mb:memoryDelta,ai_calls:aiCalls}));
+  const elapsed=performance.now()-started;
+  console.log(JSON.stringify({scenario:name,logical_requests:entries.length,max_transport_inflight:maxTransportInFlight,errors:errors.length,error_types:errorCounts,throughput_per_sec:Math.round(entries.length*1000/elapsed),p50_ms:percentile(sorted,.5),p95_ms:percentile(sorted,.95),p99_ms:percentile(sorted,.99),rss_delta_mb:memoryDelta,ai_calls:aiCalls}));
   if(errors.length)throw new Error(`${name} produced ${errors.length} HTTP errors`);
 }
 try{

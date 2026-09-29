@@ -2,7 +2,7 @@ import Database from 'better-sqlite3';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { root } from './config.js';
+import { root, config } from './config.js';
 import type { Normalized } from './normalize.js';
 import { migrate } from './migrations.js';
 
@@ -11,6 +11,7 @@ const dbPath=process.env.DEMO_DB_PATH || resolve(root, 'data/chat.sqlite');
 export const db = new Database(dbPath);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
+db.pragma('busy_timeout = 5000');
 db.exec(`
 CREATE TABLE IF NOT EXISTS contacts (
  id TEXT PRIMARY KEY, provider_contact_id TEXT UNIQUE NOT NULL, phone TEXT, name TEXT,
@@ -44,9 +45,11 @@ CREATE TABLE IF NOT EXISTS sessions (
 );
 `);
 await migrate(db,dbPath,root);
+// The pre-RBAC administrator is the only account promoted automatically.
+db.prepare("UPDATE agents SET role='SUPERADMIN' WHERE username=? AND role='AGENT'").run(config.ADMIN_USER);
 
 export type Contact = { id: string; provider_contact_id: string; name: string | null; phone: string | null; created_at: string };
-export type Conversation = { id: string; contact_id: string; mode: 'MENU'|'AI'|'HUMAN_PENDING'|'HUMAN_ACTIVE'|'CLOSING'|'CLOSED'; intent: string|null; assigned_agent_id: string|null; unread_count: number; next_sequence:number; invalid_menu_attempts:number; closed_at:string|null; last_message_at: string|null; updated_at: string };
+export type Conversation = { id: string; contact_id: string; mode: 'MENU'|'AI'|'HUMAN_PENDING'|'HUMAN_ACTIVE'|'CLOSING'|'CLOSED'; intent: string|null; assigned_agent_id: string|null; unread_count: number; next_sequence:number; invalid_menu_attempts:number; closed_at:string|null; last_message_at: string|null; updated_at: string; version:number; disposition:string|null; closed_by:string|null;close_note:string|null;sale_amount:number|null;sale_reference:string|null;follow_up_at:string|null;final_assignee_id:string|null;assignment_source:string|null };
 export type Message = { id: string; provider_message_id: string|null; provider_event_id:string|null; sequence:number; client_message_id:string|null; reply_to_message_id:string|null; conversation_id: string; contact_id: string; direction: string; sender_type: string; route: string; message_type: string; text: string; media_url: string|null; mime_type: string|null; file_name: string|null; media_size: number|null; latitude: number|null; longitude: number|null; storage_status:string|null; delivery_status: string|null; provider_timestamp: string|null; processed_at: string|null; received_at:string|null; created_at: string };
 export const getConversation = (id: string) => db.prepare('SELECT * FROM conversations WHERE id=?').get(id) as Conversation | undefined;
 export const getContact = (id: string) => db.prepare('SELECT * FROM contacts WHERE id=?').get(id) as Contact | undefined;
@@ -60,9 +63,10 @@ export function setMode(id: string, mode: Conversation['mode'], intent: string |
 }
 
 /** Durable, atomic inbound dedup. The returned message is processed once through the per-contact queue. */
-export const persistInbound = db.transaction((n: Normalized) => {
+export const persistInbound = db.transaction((n: Normalized, trace?:{correlationId:string;serverReceivedAt:string;validationCompletedAt:string;validationMs:number}) => {
   if (!n.messageId || !n.contactId) throw new Error('Inbound sin messageId o contact.id');
   if (db.prepare('SELECT 1 FROM messages WHERE provider_message_id=? OR provider_event_id=?').get(n.messageId,n.eventId || null)) return null;
+  const dedupCompletedAt=new Date().toISOString();
   let contact = db.prepare('SELECT * FROM contacts WHERE provider_contact_id=?').get(n.contactId) as Contact | undefined;
   if (!contact) {
     const id = randomUUID();
@@ -95,10 +99,14 @@ export const persistInbound = db.transaction((n: Normalized) => {
     VALUES (?,?,?,?,?,?,?,?,?,?)`).run(randomUUID(),id,item.providerMediaId||null,item.url||null,item.mimeType||null,item.fileName||null,item.size??null,item.duration??null,item.caption||null,item.thumbnail||null);
   db.prepare("UPDATE conversations SET next_sequence=?,unread_count=unread_count+1,last_message_at=?,updated_at=datetime('now') WHERE id=?").run(sequence,new Date().toISOString(),conversation.id);
   db.prepare('INSERT INTO jobs(id,message_id,conversation_id) VALUES (?,?,?)').run(randomUUID(),id,conversation.id);
-  return { id, conversationId: conversation.id, isNew, reopened };
+  const jobEnqueuedAt=new Date().toISOString();
+  const providerTime=n.raw&&typeof n.raw==='object'&&!Array.isArray(n.raw)&&typeof (n.raw as Record<string,unknown>).timestamp==='string'?(n.raw as Record<string,string>).timestamp:null;
+  db.prepare(`INSERT INTO message_latency(message_id,correlation_id,direction,provider_event_timestamp,server_received_at,validation_completed_at,dedup_completed_at,job_enqueued_at,validation_ms)
+    VALUES (?,?, 'inbound',?,?,?,?,?,?)`).run(id,trace?.correlationId||randomUUID(),providerTime,trace?.serverReceivedAt||new Date().toISOString(),trace?.validationCompletedAt||null,dedupCompletedAt,jobEnqueuedAt,trace?.validationMs??null);
+  return { id, conversationId: conversation.id, isNew, reopened, correlationId:trace?.correlationId||null };
 });
 
-export const insertOutbound = db.transaction((conversation: Conversation, text: string, sender: 'bot'|'human', route: 'MENU'|'PRESET'|'AI'|'HUMAN', mediaUrl?: string, mimeType?: string, fileName?: string, replyTo?:string, clientId?:string) => {
+export const insertOutbound = db.transaction((conversation: Conversation, text: string, sender: 'bot'|'human', route: 'MENU'|'PRESET'|'AI'|'HUMAN', mediaUrl?: string, mimeType?: string, fileName?: string, replyTo?:string, clientId?:string, clientCreatedAt?:string, apiReceivedAt?:string) => {
   const previous=replyTo ? db.prepare('SELECT id FROM messages WHERE reply_to_message_id=?').get(replyTo) as {id:string}|undefined
     : clientId ? db.prepare('SELECT id FROM messages WHERE client_message_id=?').get(clientId) as {id:string}|undefined : undefined;
   if (previous) return { id:previous.id, created:false };
@@ -108,6 +116,10 @@ export const insertOutbound = db.transaction((conversation: Conversation, text: 
     id,conversation.id,conversation.contact_id,sequence,clientId||null,replyTo||null,sender,route,mediaUrl ? (mimeType?.startsWith('image/') ? 'image' : 'document') : 'text',text,mediaUrl || null,mimeType || null,fileName || null,new Date().toISOString(),
   );
   db.prepare("UPDATE conversations SET next_sequence=?,last_message_at=?,updated_at=datetime('now') WHERE id=?").run(sequence,new Date().toISOString(),conversation.id);
+  db.prepare('INSERT INTO outbound_jobs(id,message_id) VALUES (?,?)').run(randomUUID(),id);
+  const queuedAt=new Date().toISOString();
+  db.prepare(`INSERT INTO message_latency(message_id,correlation_id,direction,client_created_at,api_received_at,job_enqueued_at,ai_reply_queued_at)
+    VALUES (?,?,'outbound',?,?,?,?)`).run(id,clientId||randomUUID(),clientCreatedAt||null,apiReceivedAt||null,queuedAt,route==='AI'?queuedAt:null);
   return {id,created:true};
 });
 

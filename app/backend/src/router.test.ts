@@ -48,9 +48,10 @@ test('real router flow keeps menus, humans and media off n8n; closing reopens to
   const { db, persistInbound, getConversation, getMessage, setMode, claimConversation } = await import('./db.js');
   const { config } = await import('./config.js');
   const { routeMessage } = await import('./router.js');
-  const originalFetch = globalThis.fetch, oldUrl = config.N8N_AI_WEBHOOK_URL;
+   const originalFetch = globalThis.fetch, oldUrl = config.N8N_AI_WEBHOOK_URL,oldPolicy=config.HANDOFF_NO_AGENT_POLICY;
   const requests: Array<{url:string;body:Record<string,unknown>}> = [];
-  config.N8N_AI_WEBHOOK_URL = 'https://test.invalid/ai';
+   config.N8N_AI_WEBHOOK_URL = 'https://test.invalid/ai';
+   config.HANDOFF_NO_AGENT_POLICY='WAIT_QUEUE';
   globalThis.fetch = async (url, init) => {
     requests.push({url:String(url),body:JSON.parse(String(init?.body))});
     return Response.json(String(url).includes('test.invalid') ? {success:true,route:'AI',reply:'Respuesta de IA'} : {id:randomUUID()});
@@ -91,7 +92,7 @@ test('real router flow keeps menus, humans and media off n8n; closing reopens to
     setMode(first.item.conversationId,'CLOSED');
     const reopened=await inbound('Hola otra vez'); assert.equal(reopened.item.reopened,true);
     assert.equal(getMessage(reopened.item.id)?.route,'MENU'); assert.equal(requests.length,sentAtHandoff+1);
-  } finally { globalThis.fetch=originalFetch; config.N8N_AI_WEBHOOK_URL=oldUrl; }
+   } finally { globalThis.fetch=originalFetch; config.N8N_AI_WEBHOOK_URL=oldUrl;config.HANDOFF_NO_AGENT_POLICY=oldPolicy; }
 });
 
 test('AI network error stays in SQLite and sends a preset without retry loops', async () => {
@@ -114,6 +115,8 @@ test('AI network error stays in SQLite and sends a preset without retry loops', 
     assert.ok(getMessage(item.id)?.processed_at);
     assert.equal((db.prepare("SELECT menu_state FROM conversations WHERE id=?").get(item.conversationId) as {menu_state:string}).menu_state,'AI_ERROR');
     assert.equal(getConversation(item.conversationId)?.mode,'AI');
+    const last=db.prepare("SELECT text FROM messages WHERE conversation_id=? AND direction='outbound' ORDER BY sequence DESC LIMIT 1").get(item.conversationId) as {text:string};
+    assert.match(last.text,/intenta nuevamente/i);assert.doesNotMatch(last.text,/conectarte con un asesor/i);
     await routeMessage(item.id); assert.equal(calls,1);
   } finally { globalThis.fetch=originalFetch; config.N8N_AI_WEBHOOK_URL=oldUrl; }
 });

@@ -8,3 +8,4 @@ app/frontend/dist/
 *.log
 scripts/.demo-pids.json
 n8n/backups/
+test-results/

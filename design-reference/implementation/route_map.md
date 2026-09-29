@@ -1,0 +1,21 @@
+# CAP Inbox — Route / Screen Map
+
+- `/login` — Login
+- `/dashboard` — Superadmin dashboard
+- `/inbox` — Inbox active/waiting/human/AI/media
+- `/inbox/archive` — Archived conversations
+- `/contacts` — Contacts CRM
+- `/contacts/:id` — Contact profile/history
+- `/campaigns` — Campaign dashboard
+- `/campaigns/new` — Campaign builder
+- `/campaigns/:id` — Campaign detail
+- `/metrics` — Global performance
+- `/metrics/agents/:id` — Agent performance
+- `/team` — Users/team
+- `/team/roles` — Roles & permissions
+- `/settings/general` — General
+- `/settings/whatsapp` — WhatsApp
+- `/settings/bot` — Bot/menu
+- `/settings/ai` — AI engine
+- `/settings/routing` — Agents/routing
+- `/settings/diagnostics` — Diagnostics

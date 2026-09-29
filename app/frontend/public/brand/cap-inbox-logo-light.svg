@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="520" viewBox="0 0 1800 520">
+  <g transform="translate(40 50) scale(1.62)">
+  <rect width="256" height="256" rx="56" fill="none"/>
+  <path d="M118 26H84C47 26 24 54 24 128s23 102 60 102h34v-51H88c-17 0-27-20-27-51s10-51 27-51h30V26Z" fill="#1e2735"/>
+  <path d="M137 26h29c37 0 66 27 66 64v75c0 23-11 43-30 56l-65 35V26Z" fill="#2ab3ae"/>
+  <circle cx="106" cy="128" r="22" fill="#f59e0b"/>
+</g>
+  <text x="520" y="225" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="800" fill="#1e2735" letter-spacing="-5">CAP</text>
+  <text x="825" y="225" font-family="Inter, Arial, sans-serif" font-size="150" font-weight="650" fill="#1e2735" letter-spacing="-5">Inbox</text>
+  <text x="528" y="320" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="450" fill="#4b5563" letter-spacing="1">Centro de Atención Híbrido</text>
+</svg>
