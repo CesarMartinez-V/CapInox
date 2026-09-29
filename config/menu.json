@@ -1,0 +1,19 @@
+{
+  "welcome": "👋 ¡Hola! Bienvenido a Inversiones CAP.\n\n¿En qué podemos ayudarte?\n\n1️⃣ Información de productos\n2️⃣ Cotización\n3️⃣ Consulta general\n4️⃣ Hablar con un asesor\n\nResponde con el número de la opción.\n\nPuedes escribir *menu* en cualquier momento para volver aquí.",
+  "invalid": "No reconocí esa opción 😅\n\nPor favor responde con:\n\n1️⃣ Información de productos\n2️⃣ Cotización\n3️⃣ Consulta general\n4️⃣ Hablar con un asesor",
+  "options": {
+    "1": { "intent": "product_information", "reply": "Perfecto 👍\n\nEscríbeme el nombre, código o descripción del producto que buscas y te ayudo." },
+    "2": { "intent": "quotation", "reply": "Claro 👍\n\nIndícame qué producto necesitas, la cantidad y cualquier detalle importante para ayudarte con la cotización." },
+    "3": { "intent": "general", "reply": "Con gusto. Escribe tu consulta y te ayudaré." },
+    "4": { "intent": "human", "reply": "Perfecto 👤\n\nTe voy a conectar con un asesor humano. Puedes seguir escribiendo aquí mientras te atienden." }
+  },
+  "claim": "Hola 👋 Ya estoy contigo. ¿Cómo puedo ayudarte?",
+  "close": "Gracias por comunicarte con nosotros 👋\n\nLa conversación ha finalizado. Si necesitas ayuda nuevamente, puedes volver a escribirnos.",
+  "returnToBot": "Perfecto 👍 Si necesitas algo más puedes elegir una opción:\n\n1️⃣ Información de productos\n2️⃣ Cotización\n3️⃣ Consulta general\n4️⃣ Hablar con un asesor",
+  "image": "Recibí tu imagen 📷. Si necesitas que un asesor la revise, puedes escribir *asesor*.",
+  "audio": "Recibí tu audio 🎤. En esta demo puedes escribir tu consulta o solicitar un asesor humano.",
+  "video": "Recibí tu video 🎬. Si necesitas que un asesor lo revise, puedes escribir *asesor*.",
+  "aiFailure": "Estoy teniendo una dificultad temporal para procesar tu consulta. Si deseas, puedo conectarte con un asesor humano.\n\n1. Intentar nuevamente\n2. Hablar con asesor",
+  "aiFlood": "Recibí varios mensajes seguidos. Dame un momento para procesarlos. Si necesitas ayuda inmediata, escribe *asesor*.",
+  "quickReplies": ["¡Hola! Ya estoy contigo 👋", "Permíteme un momento mientras verifico.", "¿Puedes compartirme un poco más de información?", "Gracias. ¿Necesitas ayuda con algo más?"]
+}

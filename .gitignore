@@ -1,0 +1,10 @@
+node_modules/
+.env*
+!.env.example
+data/
+uploads/
+dist/
+app/frontend/dist/
+*.log
+scripts/.demo-pids.json
+n8n/backups/

@@ -1,0 +1,11 @@
+import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { resolve, basename } from 'node:path';
+const src = process.argv[2];
+const dest = resolve(import.meta.dirname, '../n8n/backups');
+if (!src || !existsSync(src) || !src.toLowerCase().endsWith('.json')) throw new Error('Archivo JSON exportado no encontrado');
+const exported = JSON.parse(readFileSync(src, 'utf8'));
+if (exported.name !== 'GoGHL WhatsApp -> LLM -> Respuesta AI (CAP)' || !Array.isArray(exported.nodes) || exported.nodes.length < 4) throw new Error('Export no corresponde al workflow esperado');
+mkdirSync(dest, { recursive: true });
+const output = resolve(dest, `GoGHL_original_export_${new Date().toISOString().replaceAll(':','-')}.json`);
+copyFileSync(src, output);
+console.log(`Backup exportado: ${basename(output)} (${exported.nodes.length} nodos). No se leyeron credenciales.`);
