@@ -18,6 +18,7 @@ const env = z.object({
   CLOUDFLARE_TUNNEL_NAME: z.string().default(''),
   CLOUDFLARE_TUNNEL_TOKEN: z.string().default(''),
   QUICK_TUNNEL_ALLOWED: z.enum(['true','false']).default('false'),
+  DEV_ALLOW_QUICK_TUNNEL: z.enum(['true','false']).default('false'),
   AUTO_REGISTER_WEBHOOK: z.enum(['true','false']).default('false'),
   WEBHOOK_INGRESS_SECRET: z.string().default(''),
   N8N_AI_WEBHOOK_URL: z.string().default(''),
@@ -44,6 +45,13 @@ const env = z.object({
   DATABASE_DRIVER: z.enum(['sqlite','postgres']).default('sqlite'),
   QUEUE_DRIVER: z.enum(['database','redis']).default('database'),
 }).parse(process.env);
+// A Quick Tunnel origin is shared by the dev supervisor with backend/worker.
+// Never persist an ephemeral URL or credentials into the public configuration.
+if(process.env.NODE_ENV!=='production'&&env.DEV_ALLOW_QUICK_TUNNEL==='true'&&process.env.CAP_DEV_PUBLIC_URL){
+  const origin=new URL(process.env.CAP_DEV_PUBLIC_URL);
+  if(origin.protocol!=='https:'||!origin.hostname.endsWith('.trycloudflare.com')||origin.pathname!=='/'||origin.username||origin.password||origin.search||origin.hash)throw new Error('Invalid development tunnel origin');
+  env.PUBLIC_WEBHOOK_URL=origin.origin;
+}
 if (env.DATABASE_DRIVER !== 'sqlite' || env.QUEUE_DRIVER !== 'database') throw new Error('Solo sqlite y cola database están implementados en esta demo');
 export const config = env;
 export type Menu = {

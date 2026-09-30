@@ -26,6 +26,9 @@ test('RBAC denies cross-agent reads and transfer moves access atomically with sc
     db.prepare("INSERT INTO messages(id,conversation_id,contact_id,sequence,direction,sender_type,route,message_type,text) VALUES (?,?,?,1,'inbound','customer','HUMAN','text','Fixture')").run(randomUUID(),conversation,contact);
     db.prepare('UPDATE conversations SET next_sequence=1 WHERE id=?').run(conversation);
   }
+  const aiContact=randomUUID(),aiChat=randomUUID();
+  db.prepare('INSERT INTO contacts(id,provider_contact_id) VALUES (?,?)').run(aiContact,randomUUID());
+  db.prepare("INSERT INTO conversations(id,contact_id,mode,last_message_at) VALUES (?,?,'AI',datetime('now'))").run(aiChat,aiContact);
   await new Promise<void>(resolve=>httpServer.listen(0,'127.0.0.1',resolve));
   const address=httpServer.address();assert.ok(address&&typeof address!=='string');
   const base=`http://127.0.0.1:${address.port}`;
@@ -41,6 +44,9 @@ test('RBAC denies cross-agent reads and transfer moves access atomically with sc
     assert.equal((await api('cesar','/api/metrics')).status,403);
     assert.equal((await api('victor','/api/metrics')).status,200);
     const listBefore=await(await api('cesar','/api/conversations')).json();assert.deepEqual(listBefore.conversations.map((x:{id:string})=>x.id),[chats[0]]);
+    assert.deepEqual((await(await api('cesar','/api/conversations?filter=ai')).json()).conversations,[]);
+    assert.deepEqual((await(await api('victor','/api/conversations?filter=ai')).json()).conversations.map((x:{id:string})=>x.id),[aiChat]);
+    assert.equal((await api('cesar',`/api/conversations/${aiChat}`)).status,403);
     assert.deepEqual((await(await api('cesar','/api/contacts')).json()).contacts.map((x:{id:string})=>x.id),[contacts[0]]);
     assert.deepEqual((await(await api('daniel',`/api/contacts?search=${providerContacts[0]}`)).json()).contacts,[]);
     assert.equal((await api('daniel',`/api/contacts/${contacts[0]}`)).status,404);

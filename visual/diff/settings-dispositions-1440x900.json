@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-09-30T22:39:42.686Z",
+  "screen": "settings-dispositions",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "zoom": 1,
+    "timezone": "UTC",
+    "frozenDate": "2026-09-30T12:00:00Z"
+  },
+  "reference": {
+    "source": "C:\\Users\\PC\\Downloads\\WhatsApp chat management system\\CAP Inbox.dc.html",
+    "sha256": "f964b65437ebe0e51b029f91011d12d8d9ba152b866012bc9675a8065e9a60fc",
+    "url": "http://127.0.0.1:51223/CAP%20Inbox.dc.html",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\reference\\claude\\settings-dispositions-1440x900.png",
+    "transforms": "Measurement data-parity labels and test-only component exposure; no CAP styles or markup"
+  },
+  "actual": {
+    "url": "http://127.0.0.1:5174/settings/dispositions",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\actual\\cap\\settings-dispositions-1440x900.png"
+  },
+  "pixelDiff": {
+    "threshold": 24,
+    "changedPixels": 19936,
+    "totalPixels": 1296000,
+    "percent": 1.54,
+    "interpretation": "Includes text, chart values and state; not a similarity score"
+  },
+  "referenceBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 900,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page": {
+      "x": 104,
+      "y": 8,
+      "w": 1328,
+      "h": 884,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "30px 34px 40px",
+      "gap": "20px",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page-heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 75,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "settings-tabs": {
+      "x": 138,
+      "y": 133,
+      "w": 548.8125,
+      "h": 46,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "4px",
+      "gap": "4px",
+      "bg": "rgb(237, 237, 242)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "14px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "dispositions": {
+      "x": 138,
+      "y": 199,
+      "w": 900,
+      "h": 782,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "12px 24px 20px",
+      "gap": "normal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "24px",
+      "border": "1px",
+      "overflowY": "visible"
+    },
+    "heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 48,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "actualBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 900,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page": {
+      "x": 104,
+      "y": 8,
+      "w": 1328,
+      "h": 884,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "30px 34px 40px",
+      "gap": "20px",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page-heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 75,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "16px",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "settings-tabs": {
+      "x": 138,
+      "y": 133,
+      "w": 548.8125,
+      "h": 46,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "4px",
+      "gap": "4px",
+      "bg": "rgb(237, 237, 242)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "14px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "dispositions": {
+      "x": 138,
+      "y": 199,
+      "w": 900,
+      "h": 782,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "12px 24px 20px",
+      "gap": "normal",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "24px",
+      "border": "1px",
+      "overflowY": "visible"
+    },
+    "heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 48,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "layout": {
+    "rail": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "page": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "page-heading": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {
+        "gap": {
+          "reference": "normal",
+          "actual": "16px"
+        }
+      }
+    },
+    "settings-tabs": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "dispositions": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "heading": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,67 @@
+import { readFile, readdir, writeFile } from 'node:fs/promises';
+import { join, relative, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
+
+const root=resolve('.'),diff=join(root,'visual/diff');
+const files=(await readdir(diff)).filter(f=>f.endsWith('.json')&&!f.startsWith('summary'));
+const reports=[];
+for(const file of files){const report=JSON.parse(await readFile(join(diff,file),'utf8'));if(report.schemaVersion===2)reports.push({...report,file});}
+const expected=18*3;
+if(reports.length<expected)throw new Error(`Only ${reports.length}/${expected} current provenance-verified pairs are available`);
+const source=await readFile('C:/Users/PC/Downloads/WhatsApp chat management system/CAP Inbox.dc.html');
+const sha=createHash('sha256').update(source).digest('hex');
+if(reports.some(r=>r.reference.sha256!==sha||r.errors.length))throw new Error('Source changed or browser errors present');
+
+const backup=join(root,'data/backups/visual-code-2026-09-30T19-49-46-917Z');
+const changedBackend=[];
+for(const file of await readdir(join(root,'app/backend/src'))){
+ if(!file.endsWith('.ts')||file.endsWith('.test.ts'))continue;
+ const before=await readFile(join(backup,'app/backend/src',file)),after=await readFile(join(root,'app/backend/src',file));
+ if(!before.equals(after))changedBackend.push(file);
+}
+if(changedBackend.length)throw new Error(`Production backend changed since frozen baseline: ${changedBackend.join(', ')}`);
+const group=new Map();for(const r of reports){if(!group.has(r.screen))group.set(r.screen,[]);group.get(r.screen).push(r);}
+const allLayout=reports.flatMap(r=>Object.values(r.layout));
+const mismatches=reports.flatMap(r=>Object.entries(r.layout).filter(([,v])=>v.status!=='GEOMETRY_MATCH').map(([key,v])=>({screen:r.screen,viewport:r.viewport,key,...v})));
+const details={
+ 'inbox-human':['PASS layout; partial metadata','API does not return per-message human author, preview sender prefix or per-chat handoff age. Shows truthful generic Asesor / waiting status. No demo identity or SLA value substituted.'],
+ 'inbox-waiting':['PASS layout; partial metadata','Per-chat wait duration / SLA alarm require handoff timestamp absent from the list response. Manual assignment remains disabled because the existing transfer endpoint requires HUMAN_ACTIVE.'],
+ 'inbox-mine':['PASS','Authorized active list mapped to current username; source empty state reproduced. Pagination and additional CAP filters are in the caption dropdown.'],
+ 'inbox-ai':['PASS','Source AI/bot view and locked composer. Intervention is represented but disabled: the claim endpoint supports pending human chats, not AI.'],
+ archive:['PASS','Closed list, disposition, locked composer, contact pane and history. Reopen dialog is readonly; no reopen request is fabricated.'],
+ 'follow-up':['PASS layout; partial metadata','Existing closed list filtered by FOLLOW_UP. Follow-up date is stored by CAP but absent from this list/history payload, so no demo reminder date shown.'],
+ profile:['PASS','Source popover geometry. Production role is fixed by the server; role-demo switching is disabled. Current-role button opens CAP-only secondary actions.'],
+ metrics:['FAIL full parity; PASS layout','Source five KPIs, hourly/daily chart frame, resolution frame, closure results, timings and live-team grid ported. Current dashboard API has no temporal series, resolution percentage, sales revenue or full disposition breakdown. Empty/unmeasured fields remain —, never synthetic bars/percentages.'],
+ team:['PASS','Literal table, roles summary and permission grid. Capacity +/- wired to existing PATCH /api/users/:id, tested against isolated real backend. Existing user search/detail/deactivation preserved in secondary controls. Role matrix is readonly because no roles mutation API exists.'],
+ 'settings-routing':['PASS appearance; readonly server settings','Source tab layout / controls. Only actual observed SLA displayed; unpublished server configuration stays unmeasured and disabled.'],
+ 'settings-ai':['PASS appearance; readonly server settings','Source structure and labels; missing configuration API is not represented as a working toggle.'],
+ 'settings-dispositions':['PASS appearance; readonly server settings','Canonical rows. Existing dispositions preserved, server-owned modifications disabled.'],
+ 'settings-whatsapp':['PASS','Canonical cards and controls; real health mapped to source labels. No named-tunnel assertion, credential exposure or subscription mutation.'],
+ bot:['PASS appearance; partial controls','Canonical editor/preview structure. Existing welcome/reply/quick-reply values and PUT /api/menu preserved. Welcome header/footer split only when existing text can be losslessly parsed. Unsupported labels/reordering/keywords/preview-send stay readonly or disabled.'],
+ diagnostics:['PASS','Canonical eight service cards and incident section. Real health/incident data; technical detail retained in secondary popover, latency tools in advanced section.'],
+ transfer:['PASS appearance; existing routes functional','Canonical destination cards, agent rows, reason, information and footer. Existing agent/queue transfer and return-to-bot used. AI transfer disabled: endpoint absent.'],
+ close:['PASS','Canonical result pills, conditional amount/reference/follow-up fields, note, real farewell preview and footer. Existing durable close / audited failure handling preserved.'],
+ reopen:['PASS appearance if measured; operation unavailable','Canonical readonly dialog with explicit unavailable state. Reabrir y enviar is disabled. No reopen API added, no state mutation or outbound message simulated.'],
+ 'new-user':['Partial parity','Canonical new-user dialog and existing create contract. Password is a secondary required field because CAP does not provide source demo temporary-password generation. This real credential requirement differs from source hint.'],
+ deactivate:['PASS','Canonical deactivation confirmation, actual active-chat count and destination pills. Existing active=false/deactivateHandling PATCH contract retained; styled confirmation replaces native browser confirm.']
+};
+
+let markdown=`# Claude parity final report\n\nGenerated: ${new Date().toISOString()}\n\n## Result\n\n**Total project parity is not certified PASS.** All existing canonical page structures were ported directly to Vue. Dashboard, Contacts and Campaigns have no page template in the approved HTML. Metrics has unsupported data series; these are not filled with demo values.\n\n## Verification\n\n| Check | Result | Evidence |\n|---|---|---|\n| Skills used | None available for frontend/Vue/accessibility/visual regression | Provided catalog inspected; unrelated video skills not loaded |\n| Functional baseline | PASS | build + 28/28 tests; docs/VISUAL_PARITY_BASELINE.md |\n| Claude source inspected | PASS | CAP Inbox.dc.html lines 1–638; SHA-256 ${sha} |\n| Production backend frozen | PASS | ${changedBackend.length} changed production .ts files compared byte-for-byte with code backup |\n| Build | PASS | TypeScript, vue-tsc and Vite build |\n| Functional regression | PASS | Same 28/28 test scenarios; integration label updated to source wording and existing capacity contract also checked |\n| UI / interaction / overflow regression | PASS | 107/107 existing Playwright checks across 1366,1440,1600,1920,2560, light/dark |\n| Live runtime | PASS | npm run check:runtime: 18 JSON endpoints, archive, metrics, authenticated websocket, no page errors |\n| Realtime | PASS | Live runtime websocket + real backend/Vue integration |\n| WhatsApp | Prior real phone PASS; transport currently PASS | User confirmed actual menu/preset delivery before this visual phase. Current worker, MessageSync, own webhook, tunnel online; AI healthy; 0 failed/pending jobs. No new telephone delivery claim based on visual mocks. |\n| New Claude-versus-CAP evidence | ${reports.length} pairs | Separate source renderer and running Vue frontend, same size/DPR/zoom/font/time |\n\n## Capture contract\n\nPrimary normalized viewport: 1440×900, plus 1366×768 and 1920×1080, DPR1, zoom100%, UTC, fixed test date 2026-09-30T12:00:00Z. The source is fluid (100vh, innerWidth, fallback1440) and contains no fixed exported viewport height; no original height was invented.\n\nReference: \`visual/reference/claude/\`, rendered from the downloaded source with measurement attributes + test-only instance exposure, no CAP markup/styles injected. Actual: \`visual/actual/cap/\`, rendered from CAP Vue, with isolated deterministic API fixtures solely in visual tooling. Production has no imported demo state. Diffs/boxes/styles: \`visual/diff/\`. Earlier CAP-versus-CAP 0% results are not used.\n\nMeasured comparisons: ${allLayout.length}; geometry deviations/missing boxes over ±2px: ${mismatches.length}. Every JSON contains both bounding boxes and computed font, size, weight, line-height, padding, gap, color, radius, border and scroll styles. Dynamic health/control state colors are evaluated as application state, not forced to source demo state. Raw pixel percentages below include data/labels/control availability and are not similarity scores.\n\n## Screen-by-screen\n\n| Screen | Status | Geometry by viewport | Raw changed pixels | Real remaining difference |\n|---|---|---|---|---|\n`;
+for(const [screen,items] of group){
+ const [status,note]=details[screen]||['Not assessed',''];
+ const geometry=items.map(r=>`${r.viewport.width}×${r.viewport.height}: ${Object.values(r.layout).every(v=>v.status==='GEOMETRY_MATCH')?'PASS':'FAIL'}`).join('<br>');
+ const pixels=items.map(r=>`${r.viewport.width}: ${r.pixelDiff.percent}%`).join('<br>');
+ markdown+=`| ${screen} | ${status} | ${geometry} | ${pixels} | ${note} |\n`;
+}
+markdown+=`\n## Screens without a canonical template\n\n| Screen | Status | Why |\n|---|---|---|\n| Dashboard | FAIL / blocked source | No isDashboard/page template or dashboard navigation in canonical HTML. Existing real CAP dashboard preserved, accessible from profile secondary menu. |\n| Contacts | FAIL / blocked source | Source contains contact info pane, not a contacts directory page. Existing real directory/history preserved. |\n| Campaigns | FAIL / blocked source | Only permission names occur in source, no campaign page. Existing unavailable state preserved; no invented campaign UI or API. |\n| Delete / new conversation modals | Not represented | Neither source modal nor functional API exists. No fabricated action. |\n| Dark mode canonical parity | Not applicable | Source has only light composition. Existing derived dark preference retained and tested. |\n| Audio/video/document-specific source controls | Not represented | Source generic media frame preserved; real CAP playback/download controls remain. No fake media service. |\n\n## Snapshot pairs\n\n`;
+for(const [screen,items] of group){markdown+=`### ${screen}\n\n`;for(const r of items){const stem=r.file.replace('.json','');markdown+=`- ${r.viewport.width}×${r.viewport.height}: [Claude](../visual/reference/claude/${stem}.png) · [CAP](../visual/actual/cap/${stem}.png) · [pixel diff](../visual/diff/${stem}.png) · [boxes/styles](../visual/diff/${r.file})\n`;}markdown+='\n';}
+markdown+=`## Remaining geometry deviations\n\n${mismatches.length?'```json\n'+JSON.stringify(mismatches,null,2)+'\n```':'None in the captured key elements.'}\n\n## Functional boundaries\n\nBackend production source, schema, credentials, tunnel/supervisor, subscriptions, routing, worker, durable jobs and Socket protocol remain unchanged in this phase. The backend integration test file was adapted only for source-approved label wording and verification of the already-existing users-capacity endpoint. CSS/DOM/controller presentation is the changed product surface.\n\nTransfer/close/send/notes/tags/read/media use the existing request functions and permission checks; no fake successful operations or new backend APIs. Extra CAP functions are in source-shaped dropdowns/details/modals.\n`;
+await writeFile(join(root,'docs/CLAUDE_PARITY_FINAL.md'),markdown);
+const matrixPath=join(root,'docs/CLAUDE_VISUAL_PARITY_MATRIX.md');
+let matrix=await readFile(matrixPath,'utf8');matrix=matrix.split('\n## Final measured results')[0];
+matrix+=`\n## Final measured results\n\nThe planning rows above are superseded by this measured status table. Full notes and linked images: [CLAUDE_PARITY_FINAL.md](CLAUDE_PARITY_FINAL.md).\n\n| Source state / CAP view | Layout | Detail / availability | Functional | Final |\n|---|---|---|---|---|\n`;
+for(const [screen,items] of group){const [status,note]=details[screen];matrix+=`| ${screen} | ${items.every(r=>Object.values(r.layout).every(v=>v.status==='GEOMETRY_MATCH'))?'PASS ±2px':'FAIL: see deltas'} | ${note} | Existing contracts preserved; unsupported mutations disabled | ${status} |\n`;}
+matrix+='\nDashboard / Contacts / Campaigns: blocked by absent source templates. Dark: no canonical reference. No fabricated global parity percentage or unsupported-screen PASS.\n';
+await writeFile(matrixPath,matrix);
+await writeFile(join(diff,'final-summary.json'),JSON.stringify({sourceSha:sha,pairs:reports.length,measuredElements:allLayout.length,mismatches,productionBackendChanged:changedBackend},null,2));
+console.log(JSON.stringify({pairs:reports.length,measuredElements:allLayout.length,geometryMismatches:mismatches.length,productionBackendChanged:changedBackend,report:'docs/CLAUDE_PARITY_FINAL.md'},null,2));

@@ -1,0 +1,3278 @@
+[
+  {
+    "screen": "inbox-human",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 57808,
+      "totalPixels": 1296000,
+      "percent": 4.46,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-waiting",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 35599,
+      "totalPixels": 1296000,
+      "percent": 2.75,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "metrics",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 119011,
+      "totalPixels": 1296000,
+      "percent": 9.18,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "team",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 35224,
+      "totalPixels": 1296000,
+      "percent": 2.72,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-routing",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 22197,
+      "totalPixels": 1296000,
+      "percent": 1.71,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -656.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-ai",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 25671,
+      "totalPixels": 1296000,
+      "percent": 1.98,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -656.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-dispositions",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 38930,
+      "totalPixels": 1296000,
+      "percent": 3,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -656.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-whatsapp",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 40112,
+      "totalPixels": 1296000,
+      "percent": 3.1,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -656.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "bot",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 45799,
+      "totalPixels": 1296000,
+      "percent": 3.53,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "contact": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "diagnostics",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 132071,
+      "totalPixels": 1296000,
+      "percent": 10.19,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "transfer",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 52687,
+      "totalPixels": 1296000,
+      "percent": 4.07,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "close",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 51661,
+      "totalPixels": 1296000,
+      "percent": 3.99,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-human",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 69675,
+      "totalPixels": 1049088,
+      "percent": 6.64,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-waiting",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 44303,
+      "totalPixels": 1049088,
+      "percent": 4.22,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "metrics",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 103001,
+      "totalPixels": 1049088,
+      "percent": 9.82,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "team",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 33791,
+      "totalPixels": 1049088,
+      "percent": 3.22,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-routing",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 22192,
+      "totalPixels": 1049088,
+      "percent": 2.12,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -582.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-ai",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 25666,
+      "totalPixels": 1049088,
+      "percent": 2.45,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -582.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-dispositions",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 35924,
+      "totalPixels": 1049088,
+      "percent": 3.42,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -582.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-whatsapp",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 39859,
+      "totalPixels": 1049088,
+      "percent": 3.8,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -582.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "bot",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 42401,
+      "totalPixels": 1049088,
+      "percent": 4.04,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "contact": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "diagnostics",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 126288,
+      "totalPixels": 1049088,
+      "percent": 12.04,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "transfer",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 59577,
+      "totalPixels": 1049088,
+      "percent": 5.68,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "close",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 58303,
+      "totalPixels": 1049088,
+      "percent": 5.56,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-human",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 57796,
+      "totalPixels": 2073600,
+      "percent": 2.79,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-waiting",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 35705,
+      "totalPixels": 2073600,
+      "percent": 1.72,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "metrics",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 168159,
+      "totalPixels": 2073600,
+      "percent": 8.11,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "team",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 37808,
+      "totalPixels": 2073600,
+      "percent": 1.82,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-routing",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 22198,
+      "totalPixels": 2073600,
+      "percent": 1.07,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -1136.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-ai",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 23433,
+      "totalPixels": 2073600,
+      "percent": 1.13,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -1136.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-dispositions",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 42362,
+      "totalPixels": 2073600,
+      "percent": 2.04,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -1136.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "settings-whatsapp",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 40112,
+      "totalPixels": 2073600,
+      "percent": 1.93,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "DIFFERENT",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": -1136.98,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "bot",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 55261,
+      "totalPixels": 2073600,
+      "percent": 2.66,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "contact": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "diagnostics",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 163410,
+      "totalPixels": 2073600,
+      "percent": 7.88,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "MISSING"
+      },
+      "list": {
+        "status": "MISSING"
+      },
+      "chat": {
+        "status": "MISSING"
+      },
+      "composer": {
+        "status": "MISSING"
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "transfer",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 55344,
+      "totalPixels": 2073600,
+      "percent": 2.67,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "close",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 52324,
+      "totalPixels": 2073600,
+      "percent": 2.52,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "MISSING"
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "kpis": {
+        "status": "MISSING"
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  }
+]

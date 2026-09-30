@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 test('stable webhook sync checks public health and rotates only CAP-owned subscription using documented endpoints',async()=>{
   const {config}=await import('./config.js');
   const {syncOwnedSubscription,publicWebhookBase,expectedWebhookTarget}=await import('./provider.js');
-  const old=globalThis.fetch,prior={key:config.MESSAGESYNC_API_KEY,location:config.GHL_LOCATION_ID,secret:config.WEBHOOK_INGRESS_SECRET};
+  const old=globalThis.fetch,prior={key:config.MESSAGESYNC_API_KEY,location:config.GHL_LOCATION_ID,secret:config.WEBHOOK_INGRESS_SECRET,devQuick:config.DEV_ALLOW_QUICK_TUNNEL,quick:config.QUICK_TUNNEL_ALLOWED};
+  config.DEV_ALLOW_QUICK_TUNNEL='false';config.QUICK_TUNNEL_ALLOWED='false';
   config.MESSAGESYNC_API_KEY='fixture-key';config.GHL_LOCATION_ID='fixture-location';config.WEBHOOK_INGRESS_SECRET='fixture-secret-12345678901234567890';
   const base='https://cap.example.test',fresh=expectedWebhookTarget(base);
   const subs=[{id:'old-own',description:'web-demo-human-console',targetUrl:'https://old.example.test/webhooks/messagesync/old',events:['whatsapp.inbound','whatsapp.outbound']},{id:'external',description:'n8n - previous',targetUrl:'https://n8n.example.test/trigger',events:['whatsapp.inbound']}];
@@ -25,5 +26,5 @@ test('stable webhook sync checks public health and rotates only CAP-owned subscr
     assert.equal(subs.find(x=>x.id==='new-own')?.targetUrl,fresh);
     assert.ok(calls.includes('DELETE /v1/webhooks/subscriptions/old-own'));
     assert.ok(!calls.some(x=>x.includes('subscriptions/external')));
-  }finally{globalThis.fetch=old;config.MESSAGESYNC_API_KEY=prior.key;config.GHL_LOCATION_ID=prior.location;config.WEBHOOK_INGRESS_SECRET=prior.secret;}
+  }finally{globalThis.fetch=old;config.MESSAGESYNC_API_KEY=prior.key;config.GHL_LOCATION_ID=prior.location;config.WEBHOOK_INGRESS_SECRET=prior.secret;config.DEV_ALLOW_QUICK_TUNNEL=prior.devQuick;config.QUICK_TUNNEL_ALLOWED=prior.quick;}
 });

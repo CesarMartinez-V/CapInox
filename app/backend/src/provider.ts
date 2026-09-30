@@ -6,7 +6,7 @@ export function publicWebhookBase(value=config.PUBLIC_WEBHOOK_URL){
   if(!value)throw new Error('Stable public webhook tunnel is not configured.');
   const url=new URL(value);
   if(url.protocol!=='https:'||!url.hostname||url.username||url.password||url.search||url.hash||url.pathname!=='/'||
-    ['localhost','127.0.0.1'].includes(url.hostname)||url.hostname.endsWith('.trycloudflare.com')&&config.QUICK_TUNNEL_ALLOWED!=='true')
+    ['localhost','127.0.0.1'].includes(url.hostname)||url.hostname.endsWith('.trycloudflare.com')&&(process.env.NODE_ENV==='production'||(config.DEV_ALLOW_QUICK_TUNNEL!=='true'&&config.QUICK_TUNNEL_ALLOWED!=='true')))
     throw new Error('PUBLIC_WEBHOOK_URL must be a stable public HTTPS origin.');
   return url.origin;
 }
@@ -45,7 +45,7 @@ export async function listSubscriptions(): Promise<Array<Record<string, unknown>
 
 export async function ensureSubscription(publicUrl: string) {
   const targetUrl = expectedWebhookTarget(publicWebhookBase(publicUrl));
-  const existing = (await listSubscriptions()).find(s => s.targetUrl === targetUrl && Array.isArray(s.events) && ['whatsapp.inbound', 'whatsapp.outbound'].every(e => (s.events as unknown[]).includes(e)));
+  const existing = (await listSubscriptions()).find(s => s.description==='web-demo-human-console'&&s.targetUrl === targetUrl && Array.isArray(s.events) && ['whatsapp.inbound', 'whatsapp.outbound'].every(e => (s.events as unknown[]).includes(e)));
   if (existing) return { status: 'existing', id: existing.id };
   const result = await request('/webhooks/subscriptions', 'POST', {
     locationId: config.GHL_LOCATION_ID, targetUrl,
@@ -59,7 +59,7 @@ export async function ensureSubscription(publicUrl: string) {
 export async function syncOwnedSubscription(publicUrl: string) {
   const base = publicWebhookBase(publicUrl);
   const reachable=await fetch(`${base}/health/live`,{signal:AbortSignal.timeout(5000)}).catch(()=>null);
-  if(!reachable?.ok)throw new Error('Stable public webhook tunnel is not reachable; subscription unchanged');
+  if(!reachable?.ok||!reachable.headers.get('content-type')?.includes('application/json')||(await reachable.json()).backend!=='online')throw new Error('CAP public health is not reachable; subscription unchanged');
   const result = await ensureSubscription(base);
   let subscriptions = await listSubscriptions();
   const owned = subscriptions.filter(s => s.description === 'web-demo-human-console');

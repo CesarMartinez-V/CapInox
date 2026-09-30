@@ -231,7 +231,7 @@ app.get('/api/conversations', auth, (req, res) => {
   const queryStarted=monotonic();
   const filter = typeof req.query.filter === 'string' ? req.query.filter : 'all';
   const search = typeof req.query.search === 'string' ? req.query.search.slice(0, 100) : '';
-   const condition = filter === 'pending' ? " AND v.mode='HUMAN_PENDING'" : filter === 'active' ? " AND v.mode IN ('HUMAN_ACTIVE','CLOSING')" : filter === 'closed' ? " AND v.mode='CLOSED'" : filter === 'unread' ? " AND v.mode IN ('HUMAN_PENDING','HUMAN_ACTIVE','CLOSING') AND EXISTS(SELECT 1 FROM messages mi WHERE mi.conversation_id=v.id AND mi.direction='inbound' AND mi.sequence>COALESCE((SELECT last_read_sequence FROM conversation_reads WHERE user_id=@actor AND conversation_id=v.id),0))" : " AND v.mode IN ('HUMAN_PENDING','HUMAN_ACTIVE','CLOSING')";
+   const condition = filter === 'pending' ? " AND v.mode='HUMAN_PENDING'" : filter === 'active' ? " AND v.mode IN ('HUMAN_ACTIVE','CLOSING')" : filter === 'closed' ? " AND v.mode='CLOSED'" : filter === 'ai' ? " AND v.mode IN ('MENU','AI')" : filter === 'unread' ? " AND v.mode IN ('HUMAN_PENDING','HUMAN_ACTIVE','CLOSING') AND EXISTS(SELECT 1 FROM messages mi WHERE mi.conversation_id=v.id AND mi.direction='inbound' AND mi.sequence>COALESCE((SELECT last_read_sequence FROM conversation_reads WHERE user_id=@actor AND conversation_id=v.id),0))" : " AND v.mode IN ('HUMAN_PENDING','HUMAN_ACTIVE','CLOSING')";
   const cursor=typeof req.query.cursorTime==='string'&&typeof req.query.cursorId==='string'?{time:req.query.cursorTime.slice(0,50),id:req.query.cursorId.slice(0,100)}:null;
    const actor=res.locals.agent as Agent;
    const scope=" AND (@all=1 OR v.assigned_agent_id=@actor OR (v.mode='HUMAN_PENDING' AND v.assigned_agent_id IS NULL))";
@@ -679,11 +679,18 @@ app.get('/api/diagnostics/report',auth,requirePermission('diagnostics.view'),(_r
   res.json({version:'0.1.0',timestamp:new Date().toISOString(),backend:'online',worker:workerAlive()?'online':'offline',database:'online',inboundQueue:inbound,outboundQueue:queue,incidents});
 });
 // Serve the built console through the same HTTPS tunnel as the webhook when deployed.
+// API errors must remain JSON, including missing resources and unknown routes.
+app.use('/api',(_req,res)=>{
+  res.status(404).json({error:'Endpoint o recurso no disponible'});
+});
 const frontendDir=resolve(root,'app/frontend/dist');
 if (existsSync(frontendDir)) {
   app.use(express.static(frontendDir,{index:false}));
   app.get('/{*path}', (req,res,next) => {
-    if (req.path.startsWith('/api/') || req.path.startsWith('/webhooks/') || req.path.startsWith('/media/')) { next(); return; }
+    if (['/api','/webhooks','/media','/socket.io','/health'].some(prefix=>req.path===prefix||req.path.startsWith(`${prefix}/`))) { next(); return; }
+    if(process.env.NODE_ENV!=='production'&&process.env.CAP_DEV_FRONTEND_ORIGIN==='http://127.0.0.1:5174'&&['127.0.0.1','localhost'].includes(req.hostname)){
+      res.redirect(307,`http://127.0.0.1:5174${req.originalUrl}`);return;
+    }
     res.sendFile(resolve(frontendDir,'index.html'));
   });
 }

@@ -1,0 +1,1067 @@
+[
+  {
+    "screen": "inbox-human",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 26734,
+      "totalPixels": 1049088,
+      "percent": 2.55,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "inbox-surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-item": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": -1
+        },
+        "styles": {
+          "fontSize": {
+            "reference": "13.3333px",
+            "actual": "14px"
+          }
+        }
+      },
+      "list-avatar": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": -0.5,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-subtitle": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-actions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "quick-replies": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "compose-box": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-panel": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-card": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "radius": {
+            "reference": "0px",
+            "actual": "11px"
+          }
+        }
+      },
+      "detail-grid": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-waiting",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 7045,
+      "totalPixels": 1049088,
+      "percent": 0.67,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "inbox-surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-item": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "fontSize": {
+            "reference": "13.3333px",
+            "actual": "14px"
+          }
+        }
+      },
+      "list-avatar": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-subtitle": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-actions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-panel": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-card": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "radius": {
+            "reference": "0px",
+            "actual": "11px"
+          }
+        }
+      },
+      "detail-grid": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "inbox-ai",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 8346,
+      "totalPixels": 1049088,
+      "percent": 0.8,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "inbox-surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-item": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "fontSize": {
+            "reference": "13.3333px",
+            "actual": "14px"
+          }
+        }
+      },
+      "list-avatar": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-subtitle": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-actions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-panel": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-card": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "radius": {
+            "reference": "0px",
+            "actual": "11px"
+          }
+        }
+      },
+      "detail-grid": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "archive",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 12256,
+      "totalPixels": 1049088,
+      "percent": 1.17,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "inbox-surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-item": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "fontSize": {
+            "reference": "13.3333px",
+            "actual": "14px"
+          }
+        }
+      },
+      "list-avatar": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-subtitle": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-actions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-panel": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-card": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "radius": {
+            "reference": "0px",
+            "actual": "11px"
+          }
+        }
+      },
+      "detail-grid": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "follow-up",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 11593,
+      "totalPixels": 1049088,
+      "percent": 1.11,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "inbox-surface": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-list": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "search": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "conversation-item": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "fontSize": {
+            "reference": "13.3333px",
+            "actual": "14px"
+          }
+        }
+      },
+      "list-avatar": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-header": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-subtitle": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "chat-actions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "messages": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "composer": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-panel": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-overview": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "contact-card": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {
+          "radius": {
+            "reference": "0px",
+            "actual": "11px"
+          }
+        }
+      },
+      "detail-grid": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "history": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  }
+]

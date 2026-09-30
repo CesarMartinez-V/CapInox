@@ -1,0 +1,728 @@
+[
+  {
+    "screen": "new-user",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 5350,
+      "totalPixels": 1296000,
+      "percent": 0.41,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "deactivate",
+    "viewport": {
+      "width": 1440,
+      "height": 900,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 5472,
+      "totalPixels": 1296000,
+      "percent": 0.42,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "new-user",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 5188,
+      "totalPixels": 1049088,
+      "percent": 0.49,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "deactivate",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 5446,
+      "totalPixels": 1049088,
+      "percent": 0.52,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "new-user",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 6063,
+      "totalPixels": 2073600,
+      "percent": 0.29,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  },
+  {
+    "screen": "deactivate",
+    "viewport": {
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "zoom": 1,
+      "timezone": "UTC",
+      "frozenDate": "2026-09-30T12:00:00Z"
+    },
+    "pixelDiff": {
+      "threshold": 24,
+      "changedPixels": 5510,
+      "totalPixels": 2073600,
+      "percent": 0.27,
+      "interpretation": "Includes text, chart values and state; not a similarity score"
+    },
+    "layout": {
+      "rail": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "page-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-table-heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "team-row": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "role-counts": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "permissions": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "modal": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      },
+      "heading": {
+        "status": "GEOMETRY_MATCH",
+        "deltas": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        },
+        "styles": {}
+      }
+    },
+    "errors": []
+  }
+]

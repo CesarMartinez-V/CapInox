@@ -16,3 +16,6 @@ export function recordIncident(input:Incident){
   return id;
 }
 export function resolveIncident(id:string,actorId:string){return db.prepare("UPDATE system_incidents SET status='RESOLVED',resolved_at=datetime('now'),resolved_by=? WHERE id=? AND status='OPEN'").run(actorId,id).changes>0;}
+// Only monitor-owned conditions are cleared after a successful fresh check.
+// Keep the record and occurrence count as diagnostic history.
+export function resolveRecoveredIncident(code:string){return db.prepare("UPDATE system_incidents SET status='RESOLVED',resolved_at=datetime('now'),resolved_by=NULL WHERE code=? AND status='OPEN' AND job_id IS NULL AND message_id IS NULL AND conversation_id IS NULL").run(code).changes;}

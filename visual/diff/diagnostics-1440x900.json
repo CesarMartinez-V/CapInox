@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-09-30T22:39:50.119Z",
+  "screen": "diagnostics",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "zoom": 1,
+    "timezone": "UTC",
+    "frozenDate": "2026-09-30T12:00:00Z"
+  },
+  "reference": {
+    "source": "C:\\Users\\PC\\Downloads\\WhatsApp chat management system\\CAP Inbox.dc.html",
+    "sha256": "f964b65437ebe0e51b029f91011d12d8d9ba152b866012bc9675a8065e9a60fc",
+    "url": "http://127.0.0.1:51223/CAP%20Inbox.dc.html",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\reference\\claude\\diagnostics-1440x900.png",
+    "transforms": "Measurement data-parity labels and test-only component exposure; no CAP styles or markup"
+  },
+  "actual": {
+    "url": "http://127.0.0.1:5174/diagnostics",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\actual\\cap\\diagnostics-1440x900.png"
+  },
+  "pixelDiff": {
+    "threshold": 24,
+    "changedPixels": 17289,
+    "totalPixels": 1296000,
+    "percent": 1.33,
+    "interpretation": "Includes text, chart values and state; not a similarity score"
+  },
+  "referenceBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 900,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page": {
+      "x": 104,
+      "y": 8,
+      "w": 1328,
+      "h": 884,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "30px 34px 40px",
+      "gap": "20px",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page-heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 75,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "16px",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "services": {
+      "x": 138,
+      "y": 133,
+      "w": 1260,
+      "h": 190,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "12px",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "incidents": {
+      "x": 138,
+      "y": 343,
+      "w": 1260,
+      "h": 290,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "22px 24px",
+      "gap": "10px",
+      "bg": "rgb(222, 223, 249)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "24px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "incident": {
+      "x": 162,
+      "y": 401,
+      "w": 1212,
+      "h": 100,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "16px",
+      "gap": "14px",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "18px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "heading": {
+      "x": 138,
+      "y": 38,
+      "w": 325.140625,
+      "h": 48,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "actualBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 900,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page": {
+      "x": 104,
+      "y": 8,
+      "w": 1328,
+      "h": 884,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "30px 34px 40px",
+      "gap": "20px",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "page-heading": {
+      "x": 138,
+      "y": 38,
+      "w": 1260,
+      "h": 75,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "16px",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "services": {
+      "x": 138,
+      "y": 133,
+      "w": 1260,
+      "h": 190,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "12px",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "incidents": {
+      "x": 138,
+      "y": 343,
+      "w": 1260,
+      "h": 290,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "22px 24px",
+      "gap": "10px",
+      "bg": "rgb(222, 223, 249)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "24px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "incident": {
+      "x": 162,
+      "y": 401,
+      "w": 1212,
+      "h": 100,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "16px",
+      "gap": "14px",
+      "bg": "rgb(255, 255, 255)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "18px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "heading": {
+      "x": 138,
+      "y": 38,
+      "w": 325.140625,
+      "h": 48,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "32px",
+      "fontWeight": "500",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "layout": {
+    "rail": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "page": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "page-heading": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "services": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "incidents": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "incident": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "heading": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    }
+  },
+  "errors": []
+}

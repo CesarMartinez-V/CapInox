@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-09-30T22:40:09.706Z",
+  "screen": "inbox-mine",
+  "viewport": {
+    "width": 1366,
+    "height": 768,
+    "dpr": 1,
+    "zoom": 1,
+    "timezone": "UTC",
+    "frozenDate": "2026-09-30T12:00:00Z"
+  },
+  "reference": {
+    "source": "C:\\Users\\PC\\Downloads\\WhatsApp chat management system\\CAP Inbox.dc.html",
+    "sha256": "f964b65437ebe0e51b029f91011d12d8d9ba152b866012bc9675a8065e9a60fc",
+    "url": "http://127.0.0.1:51223/CAP%20Inbox.dc.html",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\reference\\claude\\inbox-mine-1366x768.png",
+    "transforms": "Measurement data-parity labels and test-only component exposure; no CAP styles or markup"
+  },
+  "actual": {
+    "url": "http://127.0.0.1:5174/inbox",
+    "screenshot": "C:\\Users\\PC\\Desktop\\web demo\\visual\\actual\\cap\\inbox-mine-1366x768.png"
+  },
+  "pixelDiff": {
+    "threshold": 24,
+    "changedPixels": 959,
+    "totalPixels": 1049088,
+    "percent": 0.09,
+    "interpretation": "Includes text, chart values and state; not a similarity score"
+  },
+  "referenceBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 768,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "inbox-surface": {
+      "x": 104,
+      "y": 8,
+      "w": 1254,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "hidden"
+    },
+    "conversation-list": {
+      "x": 104,
+      "y": 8,
+      "w": 340,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "24px 14px 14px 22px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "search": {
+      "x": 126,
+      "y": 32,
+      "w": 304,
+      "h": 44,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px 14px",
+      "gap": "10px",
+      "bg": "rgb(228, 229, 251)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "12px",
+      "border": "1px",
+      "overflowY": "visible"
+    },
+    "chat": {
+      "x": 444,
+      "y": 8,
+      "w": 914,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 26px 18px 16px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "actualBoxes": {
+    "rail": {
+      "x": 0,
+      "y": 0,
+      "w": 104,
+      "h": 768,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 10px 18px",
+      "gap": "4px",
+      "bg": "rgb(32, 32, 34)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "auto"
+    },
+    "inbox-surface": {
+      "x": 104,
+      "y": 8,
+      "w": 1254,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px",
+      "gap": "normal",
+      "bg": "rgb(249, 250, 252)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "32px",
+      "border": "0px",
+      "overflowY": "hidden"
+    },
+    "conversation-list": {
+      "x": 104,
+      "y": 8,
+      "w": 340,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "24px 14px 14px 22px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    },
+    "search": {
+      "x": 126,
+      "y": 32,
+      "w": 304,
+      "h": 44,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "0px 14px",
+      "gap": "10px",
+      "bg": "rgb(228, 229, 251)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "12px",
+      "border": "1px",
+      "overflowY": "visible"
+    },
+    "chat": {
+      "x": 444,
+      "y": 8,
+      "w": 914,
+      "h": 752,
+      "font": "Poppins, system-ui, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "letterSpacing": "normal",
+      "padding": "26px 26px 18px 16px",
+      "gap": "normal",
+      "bg": "rgba(0, 0, 0, 0)",
+      "color": "rgb(32, 32, 34)",
+      "radius": "0px",
+      "border": "0px",
+      "overflowY": "visible"
+    }
+  },
+  "layout": {
+    "rail": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "inbox-surface": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "conversation-list": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "search": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    },
+    "chat": {
+      "status": "GEOMETRY_MATCH",
+      "deltas": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "styles": {}
+    }
+  },
+  "errors": []
+}
